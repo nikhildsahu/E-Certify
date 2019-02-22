@@ -19,9 +19,16 @@ import MyProfile from "./Student/MyProfile.jsx";
 import MyInstitute from "./Institute/MyInstitute.jsx";
 import MultiSigCreationInst from "./Institute/MultiSigCreationInst.jsx";
 import MultiSigCreationStud from "./Student/MultiSigCreationStud";
+import UpdateProfile from "./Student/UpdateProfile.jsx";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = {
+    storageValue: 0,
+    web3: null,
+    accounts: null,
+    contract: null,
+    student: { pendinguploads: ["ssc", "hsc"] }
+  };
 
   componentDidMount = async () => {
     try {
@@ -51,7 +58,6 @@ class App extends Component {
       console.error(error);
     }
   };
-  //idhwuihdjwihdj
 
   runExample = async () => {
     const web3 = await getWeb3();
@@ -126,6 +132,15 @@ class App extends Component {
                 path="/myi"
                 component={() => (
                   <MyInstitute
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/UpdateProfile"
+                component={() => (
+                  <UpdateProfile
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />
