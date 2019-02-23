@@ -82,7 +82,7 @@ class UploadPage extends Component {
     reader.readAsArrayBuffer(file);
     reader.onloadend = () => {
       // this.setState({ buffer: Buffer(reader.result) });
-      //   console.log("buffer", Buffer(reader.result));
+      //   console.log("buffjmnnnnnnnnnnnnnnnnnner", Buffer(reader.result));
 
       this.hj(Buffer(reader.result));
     };
