@@ -13,7 +13,8 @@ class MyProfile extends Component {
     owner1: "",
     owner2: "",
     name: "",
-    profilepic: ""
+    profilepic: "",
+    aadhar: ""
   };
   sa = async () => {
     const { accounts, contract } = this.props;
@@ -26,6 +27,9 @@ class MyProfile extends Component {
     const response1 = await contract.methods.getProfile(accounts[0]).call();
     this.setState({ name: response1[0] });
     this.setState({ profilepic: response1[1] });
+    const response3 = await contract.methods.getAadhar().call();
+    this.setState({ aadhar: response3 });
+    console.log(response3);
     // const response2 = await contract.methods
     //   .getUploadReqList(accounts[0])
     //   .call();
@@ -75,10 +79,10 @@ class MyProfile extends Component {
   render() {
     return (
       <div>
-        {/* <button onClick={this.sa.bind(this)} style={{ width: "300px" }}>
+        <button onClick={this.sa.bind(this)} style={{ width: "300px" }}>
           Click Here to View Profile
-        </button> */}
-        {this.disp()}
+        </button>
+        {/* {this.disp()} */}
         <Paper
           style={{
             padding: "15px",
@@ -137,6 +141,19 @@ class MyProfile extends Component {
                     <br />
                     {this.state.owner2}
                   </Typography>
+                  <button
+                    onClick={() => {
+                      if (this.state.aadhar.length > 0) {
+                        window.open(
+                          `https://gateway.ipfs.io/ipfs/${this.state.aadhar}`
+                        );
+                      } else {
+                        window.alert("NULL");
+                      }
+                    }}
+                  >
+                    aadhar
+                  </button>
                 </Grid>
               </Grid>
             </Grid>
