@@ -22,9 +22,11 @@ import MultiSigCreationStud from "./Student/MultiSigCreationStud";
 import UpdateProfile from "./Student/UpdateProfile.jsx";
 import StudentDashBoard from "./Student/StudentDashBoard.jsx";
 import ChangeInstitute from "./Student/ChangeInstitute.jsx";
-import Inst from "./Institute/Inst";
+import Inst from "./Institute/InstChangeApprovalbyInst";
 import ApproveUpload from "./Institute/ApproveUpload.jsx";
-
+import InstChangeApprovalbyInst from "./Institute/InstChangeApprovalbyInst";
+import ChangeOwnershipApprovalbyInst from "./Institute/ChangeOwnershipApprovalbyInst";
+import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
 class App extends Component {
   state = {
     storageValue: 0,
@@ -97,7 +99,7 @@ class App extends Component {
             <Routes />
             <Switch>
               <Route
-                path="/createStud"
+                path="/CreateStudMultisig"
                 component={() => (
                   <MultiSigCreationStud
                     accounts={this.state.accounts}
@@ -106,7 +108,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/createInst"
+                path="/CreateInstMultisig"
                 component={() => (
                   <MultiSigCreationInst
                     accounts={this.state.accounts}
@@ -114,7 +116,7 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
+              {/* <Route
                 path="/upload"
                 component={() => (
                   <Upload
@@ -122,9 +124,9 @@ class App extends Component {
                     contract={this.state.contract}
                   />
                 )}
-              />{" "}
+              />{" "} */}
               <Route
-                path="/my"
+                path="/MyProfileStud"
                 component={() => (
                   <MyProfile
                     accounts={this.state.accounts}
@@ -133,7 +135,7 @@ class App extends Component {
                 )}
               />{" "}
               <Route
-                path="/myi"
+                path="/MyProfileInst"
                 component={() => (
                   <MyInstitute
                     accounts={this.state.accounts}
@@ -160,18 +162,18 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/changeInstbyStud"
+                path="/ChangeOwnershipbyStud"
                 component={() => (
-                  <ChangeInstitute
+                  <ChangeOwnershipbyStud
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />
                 )}
               />
               <Route
-                path="/inst"
+                path="/ChangeOwnershipApprovalbyInst"
                 component={() => (
-                  <Inst
+                  <ChangeOwnershipApprovalbyInst
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />

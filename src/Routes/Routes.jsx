@@ -8,17 +8,21 @@ class Routes extends Component {
   render() {
     return (
       <div style={{ padding: "50px" }}>
-        <Link to="/createStud">CreateStud </Link>
-        <Link to="/createInst">CreateInst </Link>
+        <Link to="/CreateStudMultisig">CreateStud </Link>
+        <Link to="/CreateInstMultisig">CreateInst </Link>
 
-        <Link to="upload">Upload </Link>
-        <Link to="/my">MYProfileStud </Link>
-        <Link to="/new">NEW </Link>
-        <Link to="/myi">MYI </Link>
+        {/* <Link to="upload">Upload </Link> */}
+        <Link to="/MyProfileStud">MYProfileStud </Link>
+        {/* <Link to="/new">NEW </Link> */}
+        <Link to="/MyProfileInst">MYI </Link>
         <Link to="/UpdateProfile">Update Profile </Link>
 
         <Link to="/StudentDashBoard">StudentDashBoard </Link>
-        <Link to="/changeInstbyStud"> chnageinst </Link>
+        <Link to="/ChangeOwnershipbyStud"> chnageinstby stud </Link>
+        <Link to="/ChangeOwnershipApprovalbyInst">
+          {" "}
+          instchnage approval inst{" "}
+        </Link>
       </div>
     );
   }
