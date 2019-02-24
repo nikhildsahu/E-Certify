@@ -22,8 +22,8 @@ class MyProfile extends Component {
 
     this.setState({ owner1: response[0] });
     this.setState({ owner2: response[1] });
-    // console.log("owner:Institute:" + response[1]);
-    // console.log("owner:Student:" + response[0]);
+    console.log("owner:Institute:" + response[1]);
+    console.log("owner:Student:" + response[0]);
     const response1 = await contract.methods.getProfile(accounts[0]).call();
     this.setState({ name: response1[0] });
     this.setState({ profilepic: response1[1] });

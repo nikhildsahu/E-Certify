@@ -1,53 +1,8 @@
-// import React, { Component } from "react";
-// class MyRequest extends Component {
-//   state = { list: [] };
-
-//   list = async () => {
-//     const { contract, accounts } = this.props;
-//     var a = await contract.methods.getRequestList(accounts[0]).call();
-//     this.setState({ list: a });
-//     console.log(this.state);
-//   };
-
-//   check = async () => {
-//     const { contract, accounts } = this.props;
-
-//     var a = await contract.methods.Retrive(accounts[0]).call();
-
-//     console.log(a);
-//   };
-
-//   yu = async () => {
-//     const { contract, accounts } = this.props;
-
-//     await contract.methods
-//       .AcceptRequestByStudent(accounts[0])
-//       .send({ from: accounts[0] });
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <button onClick={this.list}>O</button>
-//         {this.state.list.map(li => {
-//           return (
-//             <div>
-//               {li} <button onClick={this.check}>Verify</button>{" "}
-//               <button onClick={this.yu}>Accept</button>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     );
-//   }
-// }
-
-// export default MyRequest;
-
 import React, { Component } from "react";
 import { Grid, Typography, Avatar, Card, Button } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+//import ExpPanel from "./ExpPanel";
 import green from "@material-ui/core/colors/green";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -56,7 +11,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MailIcon from "@material-ui/icons/Mail";
 import AlertDialog from "../CommonComponents/AlertDialog";
 
-class MyRequest extends Component {
+class PendingApproval extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -65,7 +20,6 @@ class MyRequest extends Component {
     return (
       <div>
         <Grid container>
-          {/* <Grid item md={1} /> */}
           <Grid item md={6}>
             <Card
               style={{
@@ -78,7 +32,7 @@ class MyRequest extends Component {
               <Grid container>
                 <Grid item md={1}>
                   <Avatar
-                    style={{ margin: "15px", backgroundColor: "#E10050 " }}
+                    style={{ margin: "15px", backgroundColor: "#ff5722 " }}
                   >
                     <MailIcon />
                   </Avatar>
@@ -89,12 +43,12 @@ class MyRequest extends Component {
                     style={{
                       padding: "10px",
                       marginLeft: "15px",
-                      color: "#E10050"
+                      color: "#ff5722"
                     }}
                   >
-                    Transfer of Ownership Requests
+                    Pending Approvals
                     <Typography variant="caption" style={{ marginLeft: "5px" }}>
-                      (Click on the Request to view.)
+                      (Click on the Request to view the uploaded data.)
                     </Typography>
                   </Typography>
                   <hr />
@@ -115,16 +69,16 @@ class MyRequest extends Component {
 
                   <Grid item md={6}>
                     <Typography>
-                      Request to view{" "}
-                      <em style={{ color: "red" }}>Class X marksheet </em> was
-                      sent on <em>26/1/2015</em> by <em>CPSKR</em>. <br />
-                      Requester Address : <em>8855DDX84844</em>
+                      <em>RCOEM</em> has uploaded your <em>B.Tech Degree</em>{" "}
+                      and want your approval.
                     </Typography>
                     <br />
                   </Grid>
                   <Grid item md={1} />
                   <Grid item md={1}>
-                    <AlertDialog /> {/* array map the alert dialog  */}
+                    <Button variant="outlined" color="primary">
+                      View
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
@@ -136,4 +90,4 @@ class MyRequest extends Component {
   }
 }
 
-export default MyRequest;
+export default PendingApproval;

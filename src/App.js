@@ -20,6 +20,9 @@ import MyInstitute from "./Institute/MyInstitute.jsx";
 import MultiSigCreationInst from "./Institute/MultiSigCreationInst.jsx";
 import MultiSigCreationStud from "./Student/MultiSigCreationStud";
 import UpdateProfile from "./Student/UpdateProfile.jsx";
+import StudentDashBoard from "./Student/StudentDashBoard.jsx";
+import ChangeInstitute from "./Student/ChangeInstitute.jsx";
+import Inst from "./Student/Inst.jsx";
 
 class App extends Component {
   state = {
@@ -141,6 +144,33 @@ class App extends Component {
                 path="/UpdateProfile"
                 component={() => (
                   <UpdateProfile
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/StudentDashBoard"
+                component={() => (
+                  <StudentDashBoard
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/changeInstbyStud"
+                component={() => (
+                  <ChangeInstitute
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/inst"
+                component={() => (
+                  <Inst
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />

@@ -16,6 +16,9 @@ class Routes extends Component {
         <Link to="/new">NEW </Link>
         <Link to="/myi">MYI </Link>
         <Link to="/UpdateProfile">Update Profile </Link>
+
+        <Link to="/StudentDashBoard">StudentDashBoard </Link>
+        <Link to="/changeInstbyStud"> chnageinst </Link>
       </div>
     );
   }
