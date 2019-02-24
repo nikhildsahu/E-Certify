@@ -22,7 +22,8 @@ import MultiSigCreationStud from "./Student/MultiSigCreationStud";
 import UpdateProfile from "./Student/UpdateProfile.jsx";
 import StudentDashBoard from "./Student/StudentDashBoard.jsx";
 import ChangeInstitute from "./Student/ChangeInstitute.jsx";
-import Inst from "./Student/Inst.jsx";
+import Inst from "./Institute/Inst";
+import ApproveUpload from "./Institute/ApproveUpload.jsx";
 
 class App extends Component {
   state = {
@@ -171,6 +172,15 @@ class App extends Component {
                 path="/inst"
                 component={() => (
                   <Inst
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/instapp"
+                component={() => (
+                  <ApproveUpload
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />

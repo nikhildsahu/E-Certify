@@ -233,8 +233,8 @@ class StudentDashBoard extends Component {
                     path="/pendapp"
                     component={() => (
                       <PendingApproval
-                        accounts={this.state.accounts}
-                        contract={this.state.contract}
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
                       />
                     )}
                   />
@@ -242,8 +242,8 @@ class StudentDashBoard extends Component {
                     path="/myreqs"
                     component={() => (
                       <MyRequest
-                        accounts={this.state.accounts}
-                        contract={this.state.contract}
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
                       />
                     )}
                   />
@@ -253,8 +253,8 @@ class StudentDashBoard extends Component {
                   path="/mydocs"
                   component={() => (
                     <MyDocuments
-                      accounts={this.state.accounts}
-                      contract={this.state.contract}
+                      accounts={this.props.accounts}
+                      contract={this.props.contract}
                     />
                   )}
                 />

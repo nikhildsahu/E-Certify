@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Grid, Typography, Avatar, Card, Button } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
 import AssignmentIcon from "@material-ui/icons/Assignment";
-//import ExpPanel from "./ExpPanel";
+import ExpPanel from "../CommonComponents/ExpPanel";
 import green from "@material-ui/core/colors/green";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -11,20 +11,31 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MailIcon from "@material-ui/icons/Mail";
 import AlertDialog from "../CommonComponents/AlertDialog";
 import ipfs from "../ipfs";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import Paper from "@material-ui/core/Paper";
+import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import TextField from "@material-ui/core/TextField";
+import SimpleStorageContract from "../contracts/SimpleStorage.json";
 
 class MyDocuments extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      open: false,
+      aadhar: "",
+      a: "QmafSZjxx8QaqJJBEyxRej7D9E8STGCbLzwVRgT2U7ctug"
+    };
   }
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
   captureFile = event => {
     event.preventDefault();
     const file = event.target.files[0];
@@ -37,6 +48,7 @@ class MyDocuments extends Component {
       this.hj(Buffer(reader.result));
     };
   };
+
   hih = async () => {
     const { accounts, contract } = this.props;
 
@@ -56,24 +68,32 @@ class MyDocuments extends Component {
       this.setState({ aadhar: ipfsHash[0].hash });
     });
   };
-  handleClickOpen = () => {
-    this.setState({ open: true });
+
+  newUpload = async () => {
+    const { accounts, contract } = this.props;
+
+    await contract.methods
+      .createUploadRequestbyUser(true, this.state.aadhar)
+      .send({ from: accounts[0] });
+    var t = await contract.methods
+      .getUploadReqList(this.props.accounts[0])
+      .call();
+    console.log(t);
+    this.handleClose();
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
   render() {
     return (
       <div>
         <Grid container>
-          <Grid item md={6}>
+          <Grid item md={1} />
+          <Grid item md={5}>
             <Card
               style={{
                 marginTop: "30px",
-                marginLeft: "20px",
+                marginLeft: "50px",
                 marginRight: "50px",
-                width: "1150px"
+                width: "1000px"
               }}
             >
               <Grid container>
@@ -100,7 +120,7 @@ class MyDocuments extends Component {
                   </Typography>
                 </Grid>{" "}
                 {/* array map ExpPanel.jsx */}
-                <ExpansionPanel style={{ width: "1150px" }}>
+                <ExpansionPanel style={{ width: "1000px" }}>
                   <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     <Avatar
                       style={{
@@ -134,65 +154,62 @@ class MyDocuments extends Component {
                     </Grid>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
-                <Typography variant="title">Add New Document</Typography>
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  style={{ marginLeft: "200px" }}
-                  onClick={this.handleClickOpen}
-                >
-                  Add New Document
-                </Button>
-                <Dialog
-                  disableBackdropClick
-                  disableEscapeKeyDown
-                  open={this.state.open}
-                  onClose={this.handleClose}
-                  aria-labelledby="form-dialog-title"
-                >
-                  <DialogTitle id="form-dialog-title">
-                    <Typography style={{ color: "#1a237e" }} variant="h4">
-                      Add New Document
-                    </Typography>
-                  </DialogTitle>
-                  <DialogContent>
-                    <DialogContentText>Enter Document Name</DialogContentText>
-                    <TextField
-                      autoFocus
-                      margin="dense"
-                      label="Name"
-                      type="text"
-                      fullWidth
-                    />
-                    <br />
-                    <DialogContentText style={{ marginTop: "15px" }}>
-                      Upload Document
-                    </DialogContentText>
-                    <Grid container justify="center">
-                      <img
-                        src={`https://gateway.ipfs.io/ipfs/${
-                          this.state.profilepic
-                        }`}
-                        alt="CNN"
-                        style={{
-                          margin: "20px",
-                          height: "250px",
-                          width: "250px"
-                        }}
+                {/* array map the above content  */}
+                <Grid container justify="center">
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    style={{ marginTop: "15px", marginBottom: "15px" }}
+                    onClick={this.handleClickOpen}
+                  >
+                    Add New Document{"      "}
+                  </Button>
+
+                  <Dialog
+                    disableBackdropClick
+                    disableEscapeKeyDown
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="form-dialog-title"
+                  >
+                    <DialogTitle id="form-dialog-title">
+                      <Typography style={{ color: "#1a237e" }} variant="h4">
+                        Add New Document
+                      </Typography>
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>Enter Document Name</DialogContentText>
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        label="Name"
+                        type="text"
+                        fullWidth
                       />
-                    </Grid>
-                    <Button>Browse </Button>
-                    <Button>Upload </Button>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={this.handleClose} color="primary">
-                      Cancel
-                    </Button>
-                    <Button onClick={this.handleClose} color="primary">
-                      Confirm
-                    </Button>
-                  </DialogActions>
-                </Dialog>
+                      <br />
+                      <DialogContentText style={{ marginTop: "15px" }}>
+                        Upload Document
+                      </DialogContentText>
+
+                      <Button>
+                        {" "}
+                        <input onChange={this.captureFile} type="file" />{" "}
+                      </Button>
+                      <Button>Upload </Button>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={this.handleClose} color="primary">
+                        Cancel
+                      </Button>
+                      <Button
+                        onClick={this.newUpload.bind(this)}
+                        color="primary"
+                      >
+                        Confirm
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </Grid>
               </Grid>
             </Card>
           </Grid>
