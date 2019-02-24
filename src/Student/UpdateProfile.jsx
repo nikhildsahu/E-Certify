@@ -92,42 +92,11 @@ class UploadPage extends Component {
     await ipfs.add(a, (err, ipfsHash) => {
       console.log(err, ipfsHash);
 
-      this.setState({ aadhar: ipfsHash[0].hash });
-    });
-  };
-  hj = async a => {
-    await ipfs.add(a, (err, ipfsHash) => {
-      console.log(err, ipfsHash);
-
       this.setState({ profilepic: ipfsHash[0].hash });
     });
   };
   componentDidMount = async () => {
-    try {
-      // Get network provider and web3 instance.
-      const web3 = await getWeb3();
-
-      // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
-
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
-      const instance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address
-      );
-
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
-    } catch (error) {
-      // Catch any errors for any of the above operations.
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`
-      );
-      console.error(error);
-    }
+    console.log("idhsiod");
   };
   render() {
     return (
