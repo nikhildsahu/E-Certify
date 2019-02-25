@@ -8,9 +8,9 @@ class InstRoutes extends Component {
   render() {
     return (
       <div style={{ padding: "50px" }}>
+        inst
         <Link to="/CreateInstMultisig">CreateInst </Link>
         <Link to="/UpdateProfile">Update Profile </Link>
-
         <Link to="/InstituteDashBoard">InstituteDashBoard </Link>
         <Link to="/changeinst">Inst chanage req </Link>
       </div>
