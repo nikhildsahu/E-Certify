@@ -2,10 +2,30 @@ import React, { Component } from "react";
 import { Grid, Typography, Card, Button } from "@material-ui/core";
 
 class ChangeOwnershipApprovalbyInst extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {
+    instname: "0xcdac9ddd2c5d0441a60a5a1cd27c54aabd889cda",
+    s: "0x8bb6d82f6ec5ea7a651f96f7b3353afb7caa8a47"
+  };
+  verify = async () => {
+    const { accounts, contract } = this.props;
+    const response = await contract.methods.getOwners(accounts[0]).call();
+
+    this.setState({ owner1: response[0] });
+    this.setState({ owner2: response[1] });
+    console.log("current owners");
+    console.log("owner:Institute:" + response[1]);
+    console.log("owner:Student:" + response[0]);
+    await contract.methods
+      .approveChangeOwnerINSTReqbyInst(this.state.s, this.state.s)
+      .send({ from: accounts[0] });
+    const response1 = await contract.methods.getOwners(accounts[0]).call();
+
+    this.setState({ owner1: response1[0] });
+    this.setState({ owner2: response1[1] });
+    console.log(" new owners");
+    console.log("owner:Institute:" + response[1]);
+    console.log("owner:Student:" + response[0]);
+  };
   render() {
     return (
       <div>
@@ -20,7 +40,7 @@ class ChangeOwnershipApprovalbyInst extends Component {
               <Typography variant="headline">
                 <span>
                   Request from :{" "}
-                  <em style={{ color: "#d50000" }}>{this.props.requester}</em>
+                  <em style={{ color: "#d50000" }}>{this.state.s}</em>
                 </span>
               </Typography>
               <br />
@@ -36,7 +56,11 @@ class ChangeOwnershipApprovalbyInst extends Component {
                   Deny
                 </Button>
                 <Grid item md={1} />
-                <Button variant="outlined" style={{ color: "#388e3c" }}>
+                <Button
+                  variant="outlined"
+                  onClick={this.verify.bind(this)}
+                  style={{ color: "#388e3c" }}
+                >
                   Allow
                 </Button>
               </Grid>

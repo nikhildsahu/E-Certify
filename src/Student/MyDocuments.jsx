@@ -81,6 +81,16 @@ class MyDocuments extends Component {
     console.log(t);
     this.handleClose();
   };
+  getDoc = async () => {
+    const { accounts, contract } = this.props;
+    var r = await contract.methods.getAadhar().call();
+    console.log(r);
+    if (r.length > 0) {
+      window.open(`https://gateway.ipfs.io/ipfs/${r}`);
+    } else {
+      window.alert("NULL");
+    }
+  };
 
   render() {
     return (
@@ -131,14 +141,14 @@ class MyDocuments extends Component {
                       <AssignmentIcon />
                     </Avatar>
                     <Typography style={{ margin: "10px" }}>
-                      Class X Marksheet
+                      Aadhar Card
                     </Typography>
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
                     <Grid container>
                       <Grid item md={10}>
                         <Typography>
-                          <em>Class X marksheet</em> was uploaded on{" "}
+                          <em>Aadhar Card</em> was uploaded on{" "}
                           <em>26/1/2015</em> by <em>CPSKR</em>. <br />
                           Uploader Address : <em>8855DDX84844</em>
                         </Typography>
@@ -147,6 +157,7 @@ class MyDocuments extends Component {
                         <Button
                           variant="outlined"
                           style={{ color: "green", marginLeft: "0px" }}
+                          onClick={this.getDoc.bind(this)}
                         >
                           View
                         </Button>

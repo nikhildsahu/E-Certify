@@ -18,10 +18,12 @@ class Routes extends Component {
         <Link to="/UpdateProfile">Update Profile </Link>
 
         <Link to="/StudentDashBoard">StudentDashBoard </Link>
-        <Link to="/ChangeOwnershipbyStud"> chnageinstby stud </Link>
+        <Link to="/changeinst">Inst chanage req </Link>
+        <Link to="/instchangeapp">approval chnage </Link>
+        <Link to="/instapp">approvalupload </Link>
+
         <Link to="/ChangeOwnershipApprovalbyInst">
-          {" "}
-          instchnage approval inst{" "}
+          instchnage approval inst
         </Link>
       </div>
     );

@@ -14,6 +14,7 @@ import {
 import NewRequest from "./Institute/NewRequest.jsx";
 import MyRequest from "./Student/MyRequest.jsx";
 import Routes from "./Routes/Routes.jsx";
+import InstRoutes from "./Routes/InstRoutes";
 import MyRequestInst from "./Institute/MyRequestInst.jsx";
 import MyProfile from "./Student/MyProfile.jsx";
 import MyInstitute from "./Institute/MyInstitute.jsx";
@@ -26,7 +27,8 @@ import Inst from "./Institute/InstChangeApprovalbyInst";
 import ApproveUpload from "./Institute/ApproveUpload.jsx";
 import InstChangeApprovalbyInst from "./Institute/InstChangeApprovalbyInst";
 import ChangeOwnershipApprovalbyInst from "./Institute/ChangeOwnershipApprovalbyInst";
-import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
+import InstituteDashBoard from "./Institute/InsituteDashBoard.jsx";
+// import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
 class App extends Component {
   state = {
     storageValue: 0,
@@ -162,27 +164,27 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/ChangeOwnershipbyStud"
+                path="/InstituteDashBoard"
                 component={() => (
-                  <ChangeOwnershipbyStud
+                  <InstituteDashBoard
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />
                 )}
               />
               <Route
-                path="/ChangeOwnershipApprovalbyInst"
+                path="/chnageinst"
                 component={() => (
-                  <ChangeOwnershipApprovalbyInst
+                  <ChangeInstitute
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />
                 )}
               />
               <Route
-                path="/instapp"
+                path="/instchangeapp"
                 component={() => (
-                  <ApproveUpload
+                  <InstChangeApprovalbyInst
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />
@@ -217,6 +219,7 @@ class App extends Component {
               />{" "}
               */}{" "}
             </Switch>{" "}
+            <InstRoutes />
           </div>
         </BrowserRouter>
       </div>
