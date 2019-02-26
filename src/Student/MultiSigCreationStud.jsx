@@ -9,6 +9,7 @@ import Card from "@material-ui/core/Card";
 import Checkbox from "@material-ui/core/Checkbox";
 import SimpleStorageContract from "../contracts/SimpleStorage.json";
 import getWeb3 from "../utils/getWeb3";
+import { Redirect } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -23,7 +24,8 @@ class MultiSigCreationStud extends Component {
     InstAdd: "",
     UserAdd: "",
     owner1: " ",
-    owner2: " "
+    owner2: " ",
+    trig: false
   };
   created = async () => {
     const { accounts, contract } = this.props;
@@ -39,6 +41,7 @@ class MultiSigCreationStud extends Component {
     await this.setState({ owner2: response[1] });
     console.log("owner:Student:" + response[0]);
     console.log("owner:Institute:" + response[1]);
+    this.setState({ trig: true });
   };
 
   handleChange = name => event => {
@@ -145,6 +148,7 @@ class MultiSigCreationStud extends Component {
             </Card>
           </Grid>
         </Grid>
+        {this.state.trig ? <Redirect to="/StudentDashBoard" /> : null}
       </div>
     );
   }
