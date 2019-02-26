@@ -17,6 +17,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Grid, Avatar } from "@material-ui/core";
+import logo from "../logo/logo.jpeg";
 
 const styles = theme => ({
   root: {
@@ -173,7 +174,7 @@ class TopNav extends React.Component {
           <Grid item md={12}>
             <AppBar position="static">
               <Toolbar>
-                <Avatar src="https://99designs-blog.imgix.net/wp-content/uploads/2016/11/CNN.png?auto=format&q=60&fit=max&w=930" />
+                <Avatar src={logo} />
 
                 <Typography
                   variant="h6"

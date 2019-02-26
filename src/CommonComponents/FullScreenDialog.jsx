@@ -30,7 +30,8 @@ function Transition(props) {
 
 class FullScreenDialog extends React.Component {
   state = {
-    open: false
+    open: false,
+    d: ""
   };
 
   handleClickOpen = () => {
@@ -39,6 +40,17 @@ class FullScreenDialog extends React.Component {
 
   handleClose = () => {
     this.setState({ open: false });
+  };
+  getDoc = async () => {
+    const { accounts, contract } = this.props;
+    var r = await contract.methods.getAadhar().call();
+    console.log(r);
+    // if (r.length > 0) {
+    //   window.open(`https://gateway.ipfs.io/ipfs/${r}`);
+    // } else {
+    //   window.alert("NULL");
+    // }
+    this.setState({ d: r });
   };
 
   render() {
@@ -80,7 +92,7 @@ class FullScreenDialog extends React.Component {
               <ListItemText>
                 <Grid container>
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/PM_Modi_2015.jpg/450px-PM_Modi_2015.jpg"
+                    src={`https://gateway.ipfs.io/ipfs/${this.state.d}`}
                     alt="Modiji"
                   />
                   <ListItemText style={{ padding: "50px" }}>
@@ -95,10 +107,10 @@ class FullScreenDialog extends React.Component {
                     </Typography>
 
                     <Typography variant="title" style={{ color: "#757575" }}>
-                      Your Address : A787EFVX88X
+                      Your Address : {this.props.accounts[0]}
                     </Typography>
                     <Typography variant="title" style={{ color: "#757575" }}>
-                      Uploader Address : GH87845THH597955
+                      Uploader Address :
                     </Typography>
                   </ListItemText>
                 </Grid>

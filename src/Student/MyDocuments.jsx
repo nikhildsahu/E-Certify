@@ -19,6 +19,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import SimpleStorageContract from "../contracts/SimpleStorage.json";
+import FullScreenDialog from "../CommonComponents/FullScreenDialog";
 
 class MyDocuments extends Component {
   constructor(props) {
@@ -154,13 +155,16 @@ class MyDocuments extends Component {
                         </Typography>
                       </Grid>
                       <Grid item md={1}>
-                        <Button
+                        {/* <Button
                           variant="outlined"
                           style={{ color: "green", marginLeft: "0px" }}
                           onClick={this.getDoc.bind(this)}
-                        >
-                          View
-                        </Button>
+                        > */}
+                        <FullScreenDialog
+                          accounts={this.props.accounts}
+                          contract={this.props.contract}
+                        />
+                        {/* </Button> */}
                       </Grid>
                     </Grid>
                   </ExpansionPanelDetails>
