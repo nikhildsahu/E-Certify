@@ -1,0 +1,195 @@
+pragma solidity 0.5.0;
+contract SimpleStorage {
+
+struct Documents  {
+    string  aadhar;
+    
+    
+    
+}
+
+struct MultiSig
+
+{
+    
+address inst;
+address stud;
+Documents doc;
+
+mapping(address=>Request) req;
+address [] requestlist;
+address[] requestiSend;
+
+
+}
+
+
+
+
+struct Request {
+bool stud;
+bool inst;
+bool aadhar;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+mapping(address=>MultiSig) wallets;
+
+
+mapping(address=>address) listofwall;
+
+
+
+function DoesWalletExist(address a,address b) view public returns (string memory){
+    
+    if(listofwall[a]==b)
+  {  return "yes";}
+    else { return "no"; }
+    
+    
+    
+    
+}
+
+
+
+
+function createNewMultiSigbyUser(address a) public {
+        
+wallets[msg.sender].stud=msg.sender;
+wallets[msg.sender].inst=a;
+listofwall[msg.sender]=a;
+
+
+}
+
+
+function createNewMultiSigbyInstitute(address a) public {
+        
+wallets[msg.sender].stud=a;
+wallets[msg.sender].inst=msg.sender;
+listofwall[a]=msg.sender;
+
+    
+}
+ function timestamp()public view returns (uint){
+     return now;
+ }
+
+
+function uploadAadhar(string memory a)  public  {
+wallets[msg.sender].doc.aadhar=a;
+
+
+}
+
+
+function getAadhar()public view returns (string memory){
+    
+    return wallets[msg.sender].doc.aadhar;
+    
+    
+    
+}
+
+
+function NewRequest(address ad) public {
+
+
+    
+    
+    wallets[ad].req[msg.sender].stud=false;
+    wallets[ad].req[msg.sender].stud=false;
+    wallets[ad].req[msg.sender].inst=false;
+    wallets[ad].req[msg.sender].aadhar=true;
+    wallets[ad].requestlist.push(msg.sender);
+    wallets[msg.sender].requestiSend.push(ad);
+        
+        
+        
+
+}
+
+function getRequestList(address ad)  public view returns (address[] memory){
+    
+
+return wallets[ad].requestlist;
+
+}
+
+
+
+function AcceptRequestByStudent(address ad) public
+{
+        wallets[msg.sender].req[ad].stud=true;
+
+    
+
+    
+    
+    
+}
+
+function AcceptRequestByInstitute(address ad) public
+{
+        wallets[msg.sender].req[ad].inst=true;
+
+    
+
+    
+    
+    
+}
+
+
+
+function Retrive (address
+ ad) public view returns (string memory)
+{
+    
+    
+    if(wallets[ad].req[msg.sender].inst==true&&wallets[ad].req[msg.sender].stud==true)
+    {return wallets[ad].doc.aadhar;}
+    else {return "NO ACCESSS";}
+    
+    
+}
+
+
+
+
+function requestiSent(address ad)public view returns (address[] memory){
+    return wallets[ad].requestiSend;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

@@ -1,0 +1,174 @@
+pragma solidity 0.5.0;
+contract SimpleStorage {
+
+struct Documents  {
+ string  aadhar;
+}
+
+struct PersonalInfo {
+string name;
+string propic;
+    
+}
+
+struct Owners{
+uint8 max;
+address stud;
+address inst;
+}
+
+struct Request {
+    
+bool stud;
+bool inst;
+bool aadhar;
+
+} 
+
+struct ApprovalRequest{
+ bool stud;
+ bool inst;
+ 
+}
+struct ChangeOwnerShip{
+ bool stud;
+ bool inst;
+ address studa;
+ address insta;
+
+}
+
+struct Upload {
+
+ ApprovalRequest approve;
+ bool aadhar;
+ string aadharhash;
+ 
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+struct MultiSig {
+Owners owners;
+Documents doc;
+PersonalInfo profile;
+mapping(address=>Upload) uploadreq;
+address[] listofuploadreq;
+
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+
+mapping(address=>MultiSig) wallets;
+mapping(address=>bool) listofwall;
+
+
+
+
+function createNewMultiSigUser(address a) public {
+wallets[msg.sender].owners.inst=a;
+wallets[msg.sender].owners.stud=msg.sender;
+listofwall[msg.sender]=true;
+
+}
+
+
+
+function createNewMultiSigInst(address a) public {
+wallets[msg.sender].owners.stud=a;
+wallets[msg.sender].owners.inst=msg.sender;
+listofwall[msg.sender]=true;
+
+    
+}
+
+function doesWalletExists(address a)public view returns (bool){
+if(listofwall[a]==true) 
+return true;
+else return false;
+}
+
+
+function createUploadRequestbyUser(bool ad,string memory hash)public{
+wallets[msg.sender].uploadreq[msg.sender].approve.stud=true;
+wallets[msg.sender].uploadreq[msg.sender].approve.inst=false;
+wallets[msg.sender].uploadreq[msg.sender].aadhar=ad;
+wallets[msg.sender].uploadreq[msg.sender].aadharhash=hash;
+wallets[msg.sender].listofuploadreq.push(msg.sender);
+
+    
+}
+
+
+function createUploadRequestbyInstitute(address a,bool ad,string memory hash)public{
+wallets[a].uploadreq[a].approve.inst=true;
+wallets[a].uploadreq[a].approve.stud=false;
+wallets[a].uploadreq[a].aadhar=ad;
+wallets[a].uploadreq[a].aadharhash=hash;
+wallets[a].listofuploadreq.push(msg.sender);
+
+}
+
+function getUploadReqList(address ad)public view returns (address[] memory){
+return wallets[ad].listofuploadreq;
+
+}
+
+
+function approveUploadbyUser(address ad) public{
+ 
+wallets[msg.sender].uploadreq[ad].approve.stud=true;
+if(wallets[msg.sender].uploadreq[ad].approve.stud&&wallets[msg.sender].uploadreq[ad].approve.inst)
+{
+wallets[msg.sender].doc.aadhar=wallets[msg.sender].uploadreq[ad].aadharhash;
+}
+}
+
+
+function approveUploadbyInstitute(address ad)public{
+wallets[msg.sender].uploadreq[ad].approve.inst=true;
+}
+
+
+function getAadhar ()public view returns(string memory ){
+return wallets[msg.sender].doc.aadhar;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+

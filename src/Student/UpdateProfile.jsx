@@ -27,7 +27,7 @@ class UploadPage extends Component {
     accounts: null,
     contract: null,
     name: "",
-    open: false,
+    open: true,
     profilepic: ""
   };
 

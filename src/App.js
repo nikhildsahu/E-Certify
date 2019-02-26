@@ -29,6 +29,7 @@ import InstChangeApprovalbyInst from "./Institute/InstChangeApprovalbyInst";
 import ChangeOwnershipApprovalbyInst from "./Institute/ChangeOwnershipApprovalbyInst";
 import InstituteDashBoard from "./Institute/InsituteDashBoard.jsx";
 import Dash from "./Institute/Dash.jsx";
+import Login from "./Login/Login.jsx";
 // import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
 class App extends Component {
   state = {
@@ -102,6 +103,15 @@ class App extends Component {
             <Routes />
             <Switch>
               <Route
+                path="/login"
+                component={() => (
+                  <Login
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />{" "}
+              <Route
                 path="/CreateStudMultisig"
                 component={() => (
                   <MultiSigCreationStud
@@ -147,7 +157,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/UpdateProfile"
+                path="/createstud"
                 component={() => (
                   <UpdateProfile
                     accounts={this.state.accounts}

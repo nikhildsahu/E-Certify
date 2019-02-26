@@ -1,0 +1,147 @@
+pragma solidity 0.5.0;
+contract SimpleStorage {
+
+struct Documents  {
+    string  aadhar;
+
+}
+
+struct MultiSig
+
+{
+address inst;
+address stud;
+Documents doc;
+mapping(address=>Request) req;
+  
+}
+
+
+
+struct Request {
+    
+bool stud;
+bool inst;
+bool aadhar;
+
+    
+}
+
+
+
+
+
+
+
+
+
+mapping(address=>MultiSig)  wallets;
+
+
+function createNewMultiSigbyUser(address a) public {
+        
+wallets[msg.sender].stud=msg.sender;
+wallets[msg.sender].inst=a;
+
+
+}
+
+
+function createNewMultiSigbyInstitute(address a) public {
+        
+wallets[msg.sender].stud=a;
+wallets[msg.sender].inst=msg.sender;
+
+
+    
+}
+
+
+
+
+function uploadAadhar(string memory a)  public  {
+wallets[msg.sender].doc.aadhar=a;
+
+
+}
+
+function getAadhar()public view returns (string memory){
+    
+    return wallets[msg.sender].doc.aadhar;
+    
+    
+    
+}
+
+
+function NewRequest(address ad) public {
+
+
+    
+    wallets[ad].req[msg.sender].stud=false;
+    
+        wallets[ad].req[msg.sender].stud=false;
+        wallets[ad].req[msg.sender].inst=false;
+        wallets[ad].req[msg.sender].aadhar=true;
+        
+
+}
+
+
+function AcceptRequestByStudent(address ad) public
+{
+        wallets[msg.sender].req[ad].stud=true;
+
+    
+
+    
+    
+    
+}
+
+function AcceptRequestByInstitute(address ad) public
+{
+        wallets[msg.sender].req[ad].inst=true;
+
+    
+
+    
+    
+    
+}
+
+
+
+function Retrive (address
+ ad) public view returns (string memory)
+{
+    
+    
+    if(wallets[ad].req[msg.sender].inst==true&&wallets[ad].req[msg.sender].stud==true)
+    {return wallets[ad].doc.aadhar;}
+    else {return "NO ACCESSS";}
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
