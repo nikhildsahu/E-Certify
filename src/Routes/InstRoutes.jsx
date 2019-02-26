@@ -13,6 +13,7 @@ class InstRoutes extends Component {
         <Link to="/UpdateProfile">Update Profile </Link>
         <Link to="/InstituteDashBoard">InstituteDashBoard </Link>
         <Link to="/changeinst">Inst chanage req </Link>
+        <Link to="/dd">Inst </Link>
       </div>
     );
   }

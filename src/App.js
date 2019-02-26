@@ -28,6 +28,7 @@ import ApproveUpload from "./Institute/ApproveUpload.jsx";
 import InstChangeApprovalbyInst from "./Institute/InstChangeApprovalbyInst";
 import ChangeOwnershipApprovalbyInst from "./Institute/ChangeOwnershipApprovalbyInst";
 import InstituteDashBoard from "./Institute/InsituteDashBoard.jsx";
+import Dash from "./Institute/Dash.jsx";
 // import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
 class App extends Component {
   state = {
@@ -173,6 +174,15 @@ class App extends Component {
                 )}
               />
               <Route
+                path="/dd"
+                component={() => (
+                  <Dash
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              {/* <Route
                 path="/chnageinst"
                 component={() => (
                   <ChangeInstitute
@@ -187,9 +197,8 @@ class App extends Component {
                   <InstChangeApprovalbyInst
                     accounts={this.state.accounts}
                     contract={this.state.contract}
-                  />
-                )}
-              />{" "}
+                  /> */}
+              )} />{" "}
               {/* <Route
                 path="/new"
                 component={() => (

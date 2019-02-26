@@ -37,6 +37,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ChangeOwnershipApprovalbyInst from "./ChangeOwnershipApprovalbyInst";
 import ApproveUpload from "./ApproveUpload";
+import DrawerRHS from "../CommonComponents/DrawerRHS";
 
 class InstituteDashBoard extends Component {
   constructor(props) {
@@ -48,7 +49,8 @@ class InstituteDashBoard extends Component {
     name: "",
     owner1: "",
     owner2: "",
-    aadhar: ""
+    aadhar: "",
+    s: "0x8bb6d82f6ec5ea7a651f96f7b3353afb7caa8a47"
   };
   profile = async () => {
     const { accounts, contract } = this.props;
@@ -87,8 +89,24 @@ class InstituteDashBoard extends Component {
   showDocs() {
     return <div>logic</div>;
   }
+  st = async () => {
+    const { accounts, contract } = this.props;
+    const response = await contract.methods
+      .getInstitutesWallet(accounts[0])
+      .call();
+    console.log("s" + response);
+  };
+  up = async () => {
+    const { accounts, contract } = this.props;
+    const response = await contract.methods
+      .getInstitutesUploadList(this.state.s)
+      .call();
+    console.log("a" + response);
+  };
   componentDidMount = async () => {
     await this.profile();
+    await this.st();
+    this.up();
   };
   render() {
     return (
@@ -167,6 +185,16 @@ class InstituteDashBoard extends Component {
                             <a href="/my">View Profile</a>
                           </Button>
                         </Grid>
+                        <Grid
+                          container
+                          justify="center"
+                          style={{ margin: "5%" }}
+                        >
+                          <DrawerRHS
+                            accounts={this.props.accounts}
+                            contract={this.props.contract}
+                          />
+                        </Grid>
                       </Grid>
                     </Grid>
                     <Grid container />
@@ -222,19 +250,6 @@ class InstituteDashBoard extends Component {
                             <Typography variant="h6">
                               Change Institute Approvals
                             </Typography>
-                          </Link>
-                        </ListItemText>
-                      </ListItem>
-                      <ListItem
-                        button
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <FolderIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Link to="/">
-                            <Typography variant="h6">Student List</Typography>
                           </Link>
                         </ListItemText>
                       </ListItem>
