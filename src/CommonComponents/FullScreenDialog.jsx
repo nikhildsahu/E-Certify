@@ -96,9 +96,7 @@ class FullScreenDialog extends React.Component {
                     alt="Modiji"
                   />
                   <ListItemText style={{ padding: "50px" }}>
-                    <Typography variant="display4">
-                      {this.props.name}
-                    </Typography>
+                    <Typography variant="display4">{this.state.d}</Typography>
                     <Typography variant="title" style={{ color: "#757575" }}>
                       {this.props.address}
                     </Typography>
