@@ -8,23 +8,25 @@ class ChangeOwnershipApprovalbyInst extends Component {
   };
   verify = async () => {
     const { accounts, contract } = this.props;
-    const response = await contract.methods.getOwners(accounts[0]).call();
 
-    this.setState({ owner1: response[0] });
-    this.setState({ owner2: response[1] });
-    console.log("current owners");
-    console.log("owner:Institute:" + response[1]);
-    console.log("owner:Student:" + response[0]);
-    await contract.methods
-      .approveChangeOwnerINSTReqbyInst(this.state.s, this.state.s)
-      .send({ from: accounts[0] });
-    const response1 = await contract.methods.getOwners(accounts[0]).call();
+    const re = await contract.methods.getInstitutesWallet(accounts[0]).call();
+    console.log("KK", re);
+    var h = [];
+    re.map(async re => {
+      var assa = await contract.methods.getChangeOwnerList(re).call();
+      console.log("AA", re);
 
-    this.setState({ owner1: response1[0] });
-    this.setState({ owner2: response1[1] });
-    console.log(" new owners");
-    console.log("owner:Institute:" + response[1]);
-    console.log("owner:Student:" + response[0]);
+      var getDet = await contract.methods.getProfile(re).call();
+      h.push({ a: re, b: assa[0], name: getDet[0], pic: getDet[1] });
+    });
+
+    this.setState({ h: h });
+    console.log("AS", h);
+
+    // var t = await contract.methods.getUploadReqList(this.state.s).call();
+    // console.log(t);
+    // var r = await contract.methods.getAadhar().call();
+    // console.log(r);
   };
   render() {
     return (

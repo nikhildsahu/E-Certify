@@ -213,17 +213,7 @@ class InstituteDashBoard extends Component {
                           <Typography variant="h6">Upload Documents</Typography>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
-                        button
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <MailIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Typography variant="h6">My Requests</Typography>
-                        </ListItemText>
-                      </ListItem>
+
                       <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -278,9 +268,10 @@ class InstituteDashBoard extends Component {
                   />
 
                   <Route
-                    path="/InstituteDashBoard"
+                    path="/InstituteDashBoard/k"
                     component={() => (
                       <LinkedAccount
+                      
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />
