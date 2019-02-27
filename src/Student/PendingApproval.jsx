@@ -14,8 +14,34 @@ import AlertDialog from "../CommonComponents/AlertDialog";
 class PendingApproval extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { array: [], inst: "", instname: "", instpic: "", jk: [] };
   }
+  req = async () => {
+    const { accounts, contract } = this.props;
+    var uplist = await contract.methods.getUploadReqList(accounts[0]).call();
+
+    var ui = [];
+    uplist.map(async a => {
+      var getDet = await contract.methods.getProfile(a).call();
+
+      var qw = { a: a, name: getDet[0], pic: getDet[1] };
+
+      ui.push(qw);
+    });
+
+    this.setState({ array: ui });
+
+    console.log(ui);
+  };
+  appro = async a => {
+    const { accounts, contract } = this.props;
+
+    await contract.methods.approveUploadbyUser(a).send({ from: accounts[0] });
+  };
+
+  componentDidMount = async () => {
+    this.req();
+  };
   render() {
     return (
       <div>
@@ -55,32 +81,48 @@ class PendingApproval extends Component {
                 </Grid>
 
                 {/* array map ExpPanel.jsx */}
-                <Grid container>
-                  <Grid item md={2} style={{ marginLeft: "25px" }}>
-                    <Avatar
-                      style={{
-                        color: "#fff",
-                        backgroundColor: green[500]
-                      }}
-                    >
-                      <MailIcon />
-                    </Avatar>
-                  </Grid>
+                {this.state.array.map(jk => {
+                  return (
+                    <div>
+                      <Grid container>
+                        <Grid item md={2} style={{ marginLeft: "25px" }}>
+                          <Avatar
+                            style={{
+                              color: "#fff",
+                              backgroundColor: green[500]
+                            }}
+                          >
+                            <MailIcon />
+                          </Avatar>
+                        </Grid>
 
-                  <Grid item md={6}>
-                    <Typography>
-                      <em>RCOEM</em> has uploaded your <em>B.Tech Degree</em>{" "}
-                      and want your approval.
-                    </Typography>
-                    <br />
-                  </Grid>
-                  <Grid item md={1} />
-                  <Grid item md={1}>
-                    <Button variant="outlined" color="primary">
-                      View
-                    </Button>
-                  </Grid>
-                </Grid>
+                        <Grid item md={6}>
+                          <Typography>
+                            <em>{jk.name}</em> has uploaded your{" "}
+                            <em>B.Tech Degree</em> and want your approval.
+                          </Typography>
+                          <br />
+                        </Grid>
+
+                        <Grid item md={1}>
+                          <Button variant="outlined" color="primary">
+                            View
+                          </Button>
+                        </Grid>
+                        <Grid item md={1} />
+                        <Grid item md={1}>
+                          <Button
+                            onClick={this.appro.bind(this, jk.a)}
+                            variant="outlined"
+                            color="primary"
+                          >
+                            Confirm
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </div>
+                  );
+                })}
               </Grid>
             </Card>
           </Grid>

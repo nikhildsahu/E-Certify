@@ -39,6 +39,7 @@ import ChangeOwnershipApprovalbyInst from "./ChangeOwnershipApprovalbyInst";
 import ApproveUpload from "./ApproveUpload";
 import DrawerRHS from "../CommonComponents/DrawerRHS";
 import LinkedAccount from "./LinkedAccounts";
+import RequestAccess from "./RequestAccess";
 
 class InstituteDashBoard extends Component {
   constructor(props) {
@@ -118,7 +119,9 @@ class InstituteDashBoard extends Component {
               <Grid item md={12}>
                 <TopNav />
               </Grid>
-
+              <Grid item md={12} style={{ padding: "40px" }}>
+                {" "}
+              </Grid>
               <Grid
                 item
                 md={3}
@@ -126,7 +129,7 @@ class InstituteDashBoard extends Component {
                   padding: "15px"
                 }}
               >
-                <Card style={{ width: "300px", height: "655px" }}>
+                <Card style={{ width: "300px", height: "1000px" }}>
                   <Grid item md={12}>
                     <Grid container>
                       <Typography
@@ -183,7 +186,9 @@ class InstituteDashBoard extends Component {
                             color="secondary"
                             style={{ marginTop: "25px" }}
                           >
-                            <a href="/my">View Profile</a>
+                            <a href="/my" style={{ textDecoration: "none" }}>
+                              View Profile
+                            </a>
                           </Button>
                         </Grid>
                         <Grid
@@ -213,7 +218,17 @@ class InstituteDashBoard extends Component {
                           <Typography variant="h6">Upload Documents</Typography>
                         </ListItemText>
                       </ListItem>
-
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <MailIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Typography variant="h6">My Requests</Typography>
+                        </ListItemText>
+                      </ListItem>
                       <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -222,7 +237,10 @@ class InstituteDashBoard extends Component {
                           <AssignmentIcon />
                         </ListItemAvatar>
                         <ListItemText>
-                          <Link to="/InstituteDashBoard/UploadApp">
+                          <Link
+                            to="/InstituteDashBoard/UploadApp"
+                            style={{ textDecoration: "none" }}
+                          >
                             <Typography variant="h6">
                               Pending Approvals
                             </Typography>
@@ -237,11 +255,68 @@ class InstituteDashBoard extends Component {
                           <AssignmentIcon />
                         </ListItemAvatar>
                         <ListItemText>
-                          <Link to="/InstituteDashBoard/ChangeOwnershipApprovalbyInst">
+                          <Link
+                            to="/InstituteDashBoard/ChangeOwnershipApprovalbyInst"
+                            style={{ textDecoration: "none" }}
+                          >
                             <Typography variant="h6">
                               Change Institute Approvals
                             </Typography>
                           </Link>
+                        </ListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <AssignmentIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            to="/InstituteDashBoard/RequestAccess"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Typography variant="h6">Request Access</Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        onClick={this.showDocs.bind(this)}
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Typography variant="h6">
+                            <Link
+                              to="/InstituteDashBoard/k"
+                              style={{ textDecoration: "none", color: "black" }}
+                            >
+                              Linked Accounts
+                            </Link>
+                          </Typography>
+                        </ListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        onClick={this.showDocs.bind(this)}
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Typography variant="h6">
+                            <Link
+                              to="/InstituteDashBoard/ReqAccess"
+                              style={{ textDecoration: "none", color: "black" }}
+                            >
+                              Request Access
+                            </Link>
+                          </Typography>
                         </ListItemText>
                       </ListItem>
                     </List>
@@ -271,7 +346,6 @@ class InstituteDashBoard extends Component {
                     path="/InstituteDashBoard/k"
                     component={() => (
                       <LinkedAccount
-                      
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />
@@ -281,6 +355,16 @@ class InstituteDashBoard extends Component {
                     path="/InstituteDashBoard/UploadApp"
                     component={() => (
                       <ApproveUpload
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+
+                  <Route
+                    path="/InstituteDashBoard/ReqAccess"
+                    component={() => (
+                      <RequestAccess
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />

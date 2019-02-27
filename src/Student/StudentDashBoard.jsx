@@ -41,6 +41,7 @@ import MyRequestInst from "../Institute/MyRequestInst";
 import PendingApproval from "./PendingApproval";
 import MyRequest from "./MyRequest";
 import ChangeInst from "./ChangeInst";
+import ApproveChnageInst from "./ApproveChangeInst";
 
 class StudentDashBoard extends Component {
   constructor(props) {
@@ -103,7 +104,9 @@ class StudentDashBoard extends Component {
               <Grid item md={12}>
                 <TopNav />
               </Grid>
-
+              <Grid item md={12} style={{ padding: "40px" }}>
+                {" "}
+              </Grid>
               <Grid
                 item
                 md={2}
@@ -115,7 +118,7 @@ class StudentDashBoard extends Component {
                 <Card
                   style={{
                     width: "300px",
-                    height: "100vh",
+                    height: "100%",
                     paddingTop: "100px"
                   }}
                 >
@@ -251,6 +254,24 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            to="/approvechnageininst"
+                          >
+                            <Typography variant="h6">
+                              Approve Institute Change
+                            </Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
                     </List>
                   </Grid>
                 </Card>
@@ -267,6 +288,15 @@ class StudentDashBoard extends Component {
                     path="/pendapp"
                     component={() => (
                       <PendingApproval
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/approvechnageininst"
+                    component={() => (
+                      <ApproveChnageInst
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />
