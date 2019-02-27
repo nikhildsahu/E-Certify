@@ -21,7 +21,8 @@ const styles = {
 class DrawerRHS extends React.Component {
   state = {
     right: false,
-    nameadd: ""
+    nameadd: "",
+    hj: []
   };
 
   toggleDrawer = (side, open) => () => {
@@ -36,16 +37,24 @@ class DrawerRHS extends React.Component {
       .call();
     console.log(response);
     this.setState({ nameadd: response });
+    await this.getname();
   };
+
   getname = async () => {
-    // const { accounts, contract } = this.props;
-    // nameadd.forEach(element => {
-    //  iterate for geting owners
-    // });
+    const { accounts, contract } = this.props;
+
+    var hj = [];
+
+    this.state.nameadd.map(async nameadd => {
+      const response2 = await contract.methods.getProfile(accounts[0]).call();
+
+      hj.push({ add: nameadd, name: response2[0], pic: response2[1] });
+    });
+
+    this.setState({ hj: hj });
   };
   componentDidMount = async () => {
     this.st();
-    this.getname();
   };
   render() {
     const { classes } = this.props;
@@ -64,11 +73,18 @@ class DrawerRHS extends React.Component {
             </ListItemText>
           </ListItem>
           <Divider />
-          {/* {this.state.name.map(() => (
-            // <ListItem button >
-            //   <ListItemText  />
-            // </ListItem>        map names
-          ))} */}
+          {this.state.hj.map(name => {
+            return (
+              <div>
+                <ListItem>
+                  <Typography variant="h5" color="black">
+                    {name.name}
+                  </Typography>
+                  <ListItemText />
+                </ListItem>
+              </div>
+            );
+          })}
         </List>
       </div>
     );

@@ -9,6 +9,7 @@ import Card from "@material-ui/core/Card";
 import Checkbox from "@material-ui/core/Checkbox";
 import SimpleStorageContract from "../contracts/SimpleStorage.json";
 import getWeb3 from "../utils/getWeb3";
+import { Redirect } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -36,7 +37,10 @@ class MultiSigCreationInst extends Component {
     await this.setState({ owner1: response[0] });
     await this.setState({ owner2: response[1] });
     console.log("owner:Institute:" + response[0]);
+
     console.log("owner:Student:" + response[1]);
+
+    this.setState({ contr: !this.state.contr });
   };
 
   handleChange = name => event => {
@@ -77,6 +81,7 @@ class MultiSigCreationInst extends Component {
   render() {
     return (
       <div style={{ paddingTop: "50px" }}>
+        {this.state.contr ? <Redirect to="/institutedashboard" /> : null}
         <Grid container>
           <Grid item md={3} />
           <Grid item md={6}>
@@ -138,6 +143,15 @@ class MultiSigCreationInst extends Component {
                   >
                     Go!
                   </Button>
+                  <hr /> <h2>OR </h2>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    style={{ position: "unset", marginBottom: "15px" }}
+                  >
+                    Go To Dashboard{" "}
+                  </Button>
+                  <hr />
                 </Grid>
               </Grid>
             </Card>

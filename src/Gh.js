@@ -1,5 +1,5 @@
 import web3 from "./web3";
-const address = "0x743e3e93dd8ffdc7c11d292c1aa2980034212996";
+const address = "0x7cba27734d7faab5cd9daf843eecf500392deaf0";
 
 const as = [
   {
@@ -297,42 +297,6 @@ const as = [
       }
     ],
     name: "declineChangeOwnerRequest",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "stud",
-        type: "address"
-      },
-      {
-        name: "reqq",
-        type: "address"
-      }
-    ],
-    name: "declinePartialOwnershipRequest",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "stud",
-        type: "address"
-      },
-      {
-        name: "reqq",
-        type: "address"
-      }
-    ],
-    name: "declineUploadRequest",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
@@ -656,20 +620,6 @@ const as = [
   },
   {
     constant: true,
-    inputs: [],
-    name: "hasStudentWallet",
-    outputs: [
-      {
-        name: "",
-        type: "address"
-      }
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    constant: true,
     inputs: [
       {
         name: "a",
@@ -702,5 +652,4 @@ const as = [
     type: "function"
   }
 ];
-
 export default new web3.eth.Contract(as, address);

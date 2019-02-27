@@ -169,7 +169,11 @@ class TopNav extends React.Component {
     );
 
     return (
-      <div className={classes.root}>
+      <div
+        style={{ zIndex: "30", position: "absolute" }}
+        class="shadow"
+        className={classes.root}
+      >
         <Grid container>
           <Grid item md={12}>
             <AppBar position="static">

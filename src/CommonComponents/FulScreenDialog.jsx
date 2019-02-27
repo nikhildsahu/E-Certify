@@ -79,10 +79,7 @@ class FullScreenDialog extends React.Component {
             <ListItem>
               <ListItemText>
                 <Grid container>
-                  <img
-                    src={`https://gateway.ipfs.io/ipfs/${this.state.doc}`}
-                    alt="Modiji"
-                  />
+                  <img src={this.props.src} alt="Modiji" />
                   <ListItemText style={{ padding: "50px" }}>
                     <Typography variant="display4">
                       {this.props.name}

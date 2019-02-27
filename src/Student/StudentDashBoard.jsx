@@ -108,15 +108,26 @@ class StudentDashBoard extends Component {
                 item
                 md={2}
                 style={{
-                  padding: "15px"
+                  height: "100vh",
+                  zIndex: "1"
                 }}
               >
-                <Card style={{ width: "300px", height: "655px" }}>
+                <Card
+                  style={{
+                    width: "300px",
+                    height: "100vh",
+                    paddingTop: "100px"
+                  }}
+                >
                   <Grid item md={12}>
                     <Grid container>
                       <Typography
                         variant="h4"
-                        style={{ padding: "20px", color: "#3F51B5" }}
+                        style={{
+                          padding: "20px",
+                          color: "#3F51B5",
+                          textAlign: "center"
+                        }}
                       >
                         My Profile
                         <br />
@@ -161,6 +172,7 @@ class StudentDashBoard extends Component {
                             {this.state.owner2.substring(0, 8) + ".."}
                           </Typography>
                         </Grid>
+
                         <Grid container justify="center">
                           <br />
                           <Button
@@ -168,12 +180,15 @@ class StudentDashBoard extends Component {
                             color="secondary"
                             style={{ marginTop: "25px" }}
                           >
-                            <a href="/my">View Profile</a>
+                            <a style={{ textDecoration: "none" }} href="/my">
+                              View Profile
+                            </a>
                           </Button>
                         </Grid>
                       </Grid>
                     </Grid>
-                    <Grid container />
+                    <br />
+                    <hr /> <Grid container />
                     {/* <hr /> */}
                     <List style={{ textAlign: "center" }}>
                       <ListItem
@@ -185,7 +200,7 @@ class StudentDashBoard extends Component {
                           <FolderIcon />
                         </ListItemAvatar>
                         <ListItemText>
-                          <Link to="/mydocs">
+                          <Link style={{ textDecoration: "none" }} to="/mydocs">
                             <Typography variant="h6">My Documents</Typography>
                           </Link>
                         </ListItemText>
@@ -198,7 +213,7 @@ class StudentDashBoard extends Component {
                           <MailIcon />
                         </ListItemAvatar>
                         <ListItemText>
-                          <Link to="/myreqs">
+                          <Link style={{ textDecoration: "none" }} to="/myreqs">
                             <Typography variant="h6">My Requests</Typography>
                           </Link>
                         </ListItemText>
@@ -211,7 +226,10 @@ class StudentDashBoard extends Component {
                           <FolderIcon />
                         </ListItemAvatar>
                         <ListItemText>
-                          <Link to="/pendapp">
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            to="/pendapp"
+                          >
                             <Typography variant="h6">
                               Pending Approvals
                             </Typography>
@@ -226,7 +244,7 @@ class StudentDashBoard extends Component {
                           <FolderIcon />
                         </ListItemAvatar>
                         <ListItemText>
-                          <Link to="/chinst">
+                          <Link style={{ textDecoration: "none" }} to="/chinst">
                             <Typography variant="h6">
                               Change Institute
                             </Typography>
@@ -241,7 +259,7 @@ class StudentDashBoard extends Component {
                 item
                 md={7}
                 style={{
-                  padding: "15px"
+                  paddingTop: "70px"
                 }}
               >
                 <Switch>
