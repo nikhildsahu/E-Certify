@@ -8,7 +8,7 @@ class Routes extends Component {
   render() {
     return (
       <div style={{ padding: "50px" }}>
-        student
+        studentasas
         <Link to="/CreateStudMultisig">CreateStud </Link>
         {/* <Link to="/CreateInstMultisig">CreateInst </Link> */}
         {/* <Link to="upload">Upload </Link> */}
