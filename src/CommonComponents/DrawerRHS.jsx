@@ -79,6 +79,7 @@ class DrawerRHS extends React.Component {
                 <ListItem>
                   <Typography variant="h5" color="black">
                     {name.name}
+                    <br />
                   </Typography>
                   <ListItemText />
                 </ListItem>

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
+
+import DabContract from "./contracts/Dab.json";
+
 import getWeb3 from "./utils/getWeb3";
 import MultiSig from "./Student/MultiSig.jsx";
 import Upload from "./Student/Upload.jsx";
@@ -57,10 +60,15 @@ class App extends Component {
         SimpleStorageContract.abi,
         deployedNetwork && deployedNetwork.address
       );
+      const deployedNetwork2 = DabContract.networks[networkId];
+      const instance2 = new web3.eth.Contract(
+        DabContract.abi,
+        deployedNetwork2 && deployedNetwork2.address
+      );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance }, this.runExample);
+      this.setState({ web3, accounts, contract: instance2 }, this.runExample);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(

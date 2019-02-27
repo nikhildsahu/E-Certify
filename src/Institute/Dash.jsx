@@ -223,31 +223,7 @@ class Dash extends Component {
               style={{
                 padding: "15px"
               }}
-            >
-              <Card style={{ margin: "15px" }}>
-                <Typography
-                  variant="h4"
-                  style={{ padding: "10px", color: "#3F51B5" }}
-                >
-                  Notifications
-                  <Typography variant="caption" style={{ marginLeft: "5px" }}>
-                    (Click on the Notification to view.)
-                  </Typography>
-                </Typography>
-                {/* pass props here by array mapping */}
-                <List>
-                  <ListItem button>
-                    <ListItemText>
-                      <Typography variant="title">
-                        Microsoft : Request to view B.Tech Degree
-                      </Typography>
-                    </ListItemText>
-                  </ListItem>
-                  <Divider />
-                </List>
-                {/* pass props here by array mapping */}
-              </Card>
-            </Grid>
+            />
             {/* <DrawerRHS /> */}
           </Grid>
         </div>

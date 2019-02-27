@@ -27,7 +27,8 @@ class MyDocuments extends Component {
     this.state = {
       open: false,
       aadhar: "",
-      a: "QmafSZjxx8QaqJJBEyxRej7D9E8STGCbLzwVRgT2U7ctug"
+      a: "QmafSZjxx8QaqJJBEyxRej7D9E8STGCbLzwVRgT2U7ctug",
+      hasAadhar: false
     };
   }
   handleClickOpen = () => {
@@ -93,6 +94,15 @@ class MyDocuments extends Component {
     }
   };
 
+  componentDidMount = async () => {
+    const { accounts, contract } = this.props;
+
+    var r = await contract.methods.getAadhar().call();
+    if (r.length > 0) {
+      this.setState({ hasAadhar: true });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -131,45 +141,48 @@ class MyDocuments extends Component {
                   </Typography>
                 </Grid>{" "}
                 {/* array map ExpPanel.jsx */}
-                <ExpansionPanel style={{ width: "1000px" }}>
-                  <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Avatar
-                      style={{
-                        color: "#fff",
-                        backgroundColor: green[500]
-                      }}
-                    >
-                      <AssignmentIcon />
-                    </Avatar>
-                    <Typography style={{ margin: "10px" }}>
-                      Aadhar Card
-                    </Typography>
-                  </ExpansionPanelSummary>
-                  <ExpansionPanelDetails>
-                    <Grid container>
-                      <Grid item md={10}>
-                        <Typography>
-                          <em>Aadhar Card</em> was uploaded on{" "}
-                          <em>26/1/2015</em> by <em>CPSKR</em>. <br />
-                          Uploader Address : <em>8855DDX84844</em>
-                        </Typography>
-                      </Grid>
-                      <Grid item md={1}>
-                        {/* <Button
+                {this.state.hasAadhar ? (
+                  <ExpansionPanel style={{ width: "1000px" }}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                      <Avatar
+                        style={{
+                          color: "#fff",
+                          backgroundColor: green[500]
+                        }}
+                      >
+                        <AssignmentIcon />
+                      </Avatar>
+                      <Typography style={{ margin: "10px" }}>
+                        Aadhar Card
+                      </Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <Grid container>
+                        <Grid item md={10}>
+                          <Typography>
+                            <em>Aadhar Card</em> was uploaded on{" "}
+                            <em>26/1/2015</em> by <em>CPSKR</em>. <br />
+                            Uploader Address : <em>8855DDX84844</em>
+                          </Typography>
+                        </Grid>
+                        <Grid item md={1}>
+                          {/* <Button
                           variant="outlined"
                           style={{ color: "green", marginLeft: "0px" }}
                           onClick={this.getDoc.bind(this)}
                         > */}
-                        <FullScreenDialog
-                          accounts={this.props.accounts}
-                          contract={this.props.contract}
-                        />
-                        {/* </Button> */}
+                          <FullScreenDialog
+                            accounts={this.props.accounts}
+                            contract={this.props.contract}
+                          />
+                          {/* </Button> */}
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </ExpansionPanelDetails>
-                </ExpansionPanel>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
+                ) : null}
                 {/* array map the above content  */}
+                <br />
                 <Grid container justify="center">
                   <Button
                     variant="outlined"

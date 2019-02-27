@@ -38,6 +38,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import ChangeOwnershipApprovalbyInst from "./ChangeOwnershipApprovalbyInst";
 import ApproveUpload from "./ApproveUpload";
 import DrawerRHS from "../CommonComponents/DrawerRHS";
+import LinkedAccount from "./LinkedAccounts";
 
 class InstituteDashBoard extends Component {
   constructor(props) {
@@ -275,6 +276,16 @@ class InstituteDashBoard extends Component {
                       />
                     )}
                   />
+
+                  <Route
+                    path="/InstituteDashBoard"
+                    component={() => (
+                      <LinkedAccount
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
                   <Route
                     path="/InstituteDashBoard/UploadApp"
                     component={() => (
@@ -292,31 +303,7 @@ class InstituteDashBoard extends Component {
                 style={{
                   padding: "15px"
                 }}
-              >
-                <Card style={{ margin: "15px" }}>
-                  <Typography
-                    variant="h4"
-                    style={{ padding: "10px", color: "#3F51B5" }}
-                  >
-                    Notifications
-                    <Typography variant="caption" style={{ marginLeft: "5px" }}>
-                      (Click on the Notification to view.)
-                    </Typography>
-                  </Typography>
-                  {/* pass props here by array mapping */}
-                  <List>
-                    <ListItem button>
-                      <ListItemText>
-                        <Typography variant="title">
-                          Microsoft : Request to view B.Tech Degree
-                        </Typography>
-                      </ListItemText>
-                    </ListItem>
-                    <Divider />
-                  </List>
-                  {/* pass props here by array mapping */}
-                </Card>
-              </Grid>
+              />
             </Grid>
           </div>
         </div>
