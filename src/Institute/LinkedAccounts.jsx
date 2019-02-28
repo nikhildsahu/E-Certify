@@ -128,186 +128,196 @@ class LinkedAccount extends Component {
         {this.state.hj.map(hj => {
           return (
             <div>
-              <Grid container>
-                <Grid item md={1} />
-                <Grid
-                  item
-                  md={8}
-                  style={{ width: "400px", paddingTop: "50px" }}
-                >
-                  <Card style={{ width: "900px" }}>
-                    <Grid container style={{ padding: "20px" }}>
-                      <Grid container>
-                        <Grid item md={2} style={{ marginLeft: "25px" }}>
-                          <Avatar
-                            style={{
-                              color: "#fff",
-                              backgroundColor: green[500],
-                              width: "75px",
-                              height: "75px"
-                            }}
-                            src={hj.pic}
-                          />
-                        </Grid>
+              <div>
+                <Grid container>
+                  <Grid item md={1} />
+                  <Grid
+                    item
+                    md={8}
+                    style={{ width: "400px", paddingTop: "50px" }}
+                  >
+                    <Card style={{ width: "900px" }}>
+                      <Grid container style={{ padding: "20px" }}>
+                        <Grid container>
+                          <Grid item md={2} style={{ marginLeft: "25px" }}>
+                            <Avatar
+                              style={{
+                                color: "#fff",
+                                backgroundColor: green[500],
+                                width: "75px",
+                                height: "75px"
+                              }}
+                              // src={hj.pic}
+                              src={`https://gateway.ipfs.io/ipfs/${hj.pic}`}
+                            />
+                          </Grid>
 
-                        <Grid item md={4}>
-                          <Typography variant="headline">{hj.name}</Typography>
-                          <Typography variant="overline">
-                            ADDRESS : {hj.a.substring(0, 10)}
-                          </Typography>
-                          <br />
-                        </Grid>
-                        <Grid item md={1} />
-                        <Grid item md={1}>
-                          <br />
-                          <Button
-                            onClick={() => {
-                              this.setState({
-                                open: !this.state.open,
-                                currentState: hj
-                              });
-                            }}
-                            variant="outlined"
-                          >
-                            View
-                          </Button>
-                        </Grid>
-                        <Grid item md={1} />
-                        <Grid item md={1}>
-                          <br />
-                          <Button
-                            onClick={() => {
-                              this.setState({
-                                open1: !this.state.open1,
-                                currentState: hj
-                              });
-                            }}
-                            style={{ width: "200px" }}
-                            variant="outlined"
-                          >
-                            Change Institute
-                          </Button>
+                          <Grid item md={4}>
+                            <Typography variant="headline">
+                              {hj.name}
+                            </Typography>
+                            <Typography variant="overline">
+                              ADDRESS : {hj.a.substring(0, 10)}
+                            </Typography>
+                            <br />
+                          </Grid>
+                          <Grid item md={1} />
+                          <Grid item md={1}>
+                            <br />
+                            <Button
+                              onClick={() => {
+                                this.setState({
+                                  open: !this.state.open,
+                                  currentState: hj
+                                });
+                              }}
+                              variant="outlined"
+                            >
+                              View
+                            </Button>
+                          </Grid>
+                          <Grid item md={1} />
+                          <Grid item md={1}>
+                            <br />
+                            <Button
+                              onClick={() => {
+                                this.setState({
+                                  open1: !this.state.open1,
+                                  currentState: hj
+                                });
+                              }}
+                              style={{ width: "200px" }}
+                              variant="outlined"
+                            >
+                              Change Institute
+                            </Button>
+                          </Grid>
                         </Grid>
                       </Grid>
-                    </Grid>
-                  </Card>
+                    </Card>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </div>
+
+              <Dialog
+                open={this.state.open}
+                onClose={this.handleClose}
+                aria-labelledby="form-dialog-title"
+              >
+                <div style={{ marginLeft: "30px", marginRight: "30px" }}>
+                  <DialogTitle id="form-dialog-title">
+                    <Typography style={{ color: "#1a237e" }} variant="h4">
+                      Profile
+                    </Typography>
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText style={{ color: "black" }}>
+                      <Typography variant="h5">
+                        {" "}
+                        Name : {this.state.currentState.name}
+                      </Typography>
+                      <Typography variant="overline">
+                        ADDRESS : {this.state.currentState.a}
+                      </Typography>
+                    </DialogContentText>
+                    <br />
+                    {/* <DialogContentText style={{ marginTop: "15px" }}>
+              Create New Upload
+            </DialogContentText> */}
+                    <Grid container justify="center">
+                      <img
+                        src={`https://gateway.ipfs.io/ipfs/${hj.pic}`}
+                        alt="CNN"
+                        style={{
+                          margin: "20px",
+                          height: "200px",
+                          width: "200px"
+                        }}
+                      />
+                    </Grid>{" "}
+                    <DialogContentText style={{ color: "black" }}>
+                      Documents{" "}
+                      <Typography variant="caption">
+                        (Click to send View Request)
+                      </Typography>
+                    </DialogContentText>
+                    <List style={{ width: "500px" }}>
+                      <ListItem button>
+                        <ListItemText>Adhar Card</ListItemText>
+                        <Button>
+                          <input onChange={this.captureFile} type="file" />
+                        </Button>
+                      </ListItem>
+                      <Divider />
+                      <ListItem button>
+                        <ListItemText>Class X Marksheet</ListItemText>
+                        <Button>
+                          {" "}
+                          <input onChange={this.captureFile} type="file" />
+                        </Button>
+                      </ListItem>
+                      <Divider />
+                    </List>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={this.handleClose} color="primary">
+                      Cancel
+                    </Button>
+
+                    <Button onClick={this.onCreate} color="primary">
+                      Create New Upload Request
+                    </Button>
+                  </DialogActions>
+                </div>
+              </Dialog>
+              <Dialog
+                open={this.state.open1}
+                onClose={this.handleClose1}
+                aria-labelledby="form-dialog-title"
+              >
+                <DialogTitle id="form-dialog-title">
+                  <Typography style={{ color: "#1a237e" }} variant="h4">
+                    Chnage Institute Of student
+                  </Typography>
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText style={{ color: "black" }}>
+                    <Typography variant="h5">
+                      {" "}
+                      Name : {this.state.currentState.name}
+                    </Typography>
+                    <Typography variant="overline">
+                      ADDRESS : {this.state.currentState.a}
+                    </Typography>
+                    <Typography variant="h6">
+                      Enter Address of new Institute
+                    </Typography>
+                  </DialogContentText>
+                  <TextField
+                    id="standard-with-placeholder"
+                    label="Address*"
+                    placeholder="Enter Address"
+                    margin="normal"
+                    style={{ width: "250px" }}
+                    onChange={e => {
+                      {
+                        this.setState({ newinstadd: e.target.value });
+                      }
+                    }}
+                  />{" "}
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={this.handleClose1} color="primary">
+                    Cancel
+                  </Button>
+                  <Button onClick={this.changeinst} color="primary">
+                    Confirm
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </div>
           );
         })}
-
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <div style={{ marginLeft: "30px", marginRight: "30px" }}>
-            <DialogTitle id="form-dialog-title">
-              <Typography style={{ color: "#1a237e" }} variant="h4">
-                Profile
-              </Typography>
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText style={{ color: "black" }}>
-                <Typography variant="h5">
-                  {" "}
-                  Name : {this.state.currentState.name}
-                </Typography>
-                <Typography variant="overline">
-                  ADDRESS : {this.state.currentState.a}
-                </Typography>
-              </DialogContentText>
-              <br />
-              {/* <DialogContentText style={{ marginTop: "15px" }}>
-              Create New Upload
-            </DialogContentText> */}
-              <Grid container justify="center">
-                <img
-                  alt="CNN"
-                  style={{ margin: "20px", height: "200px", width: "200px" }}
-                />
-              </Grid>{" "}
-              <DialogContentText style={{ color: "black" }}>
-                Documents{" "}
-                <Typography variant="caption">
-                  (Click to send View Request)
-                </Typography>
-              </DialogContentText>
-              <List style={{ width: "500px" }}>
-                <ListItem button>
-                  <ListItemText>Adhar Card</ListItemText>
-                  <Button>
-                    <input onChange={this.captureFile} type="file" />
-                  </Button>
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemText>Class X Marksheet</ListItemText>
-                  <Button>
-                    {" "}
-                    <input onChange={this.captureFile} type="file" />
-                  </Button>
-                </ListItem>
-                <Divider />
-              </List>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
-                Cancel
-              </Button>
-
-              <Button onClick={this.onCreate} color="primary">
-                Create New Upload Request
-              </Button>
-            </DialogActions>
-          </div>
-        </Dialog>
-        <Dialog
-          open={this.state.open1}
-          onClose={this.handleClose1}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">
-            <Typography style={{ color: "#1a237e" }} variant="h4">
-              Chnage Institute Of student
-            </Typography>
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText style={{ color: "black" }}>
-              <Typography variant="h5">
-                {" "}
-                Name : {this.state.currentState.name}
-              </Typography>
-              <Typography variant="overline">
-                ADDRESS : {this.state.currentState.a}
-              </Typography>
-              <Typography variant="h6">
-                Enter Address of new Institute
-              </Typography>
-            </DialogContentText>
-            <TextField
-              id="standard-with-placeholder"
-              label="Address*"
-              placeholder="Enter Address"
-              margin="normal"
-              style={{ width: "250px" }}
-              onChange={e => {
-                {
-                  this.setState({ newinstadd: e.target.value });
-                }
-              }}
-            />{" "}
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose1} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.changeinst} color="primary">
-              Confirm
-            </Button>
-          </DialogActions>
-        </Dialog>
       </div>
     );
   }

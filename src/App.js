@@ -103,7 +103,6 @@ class App extends Component {
         <BrowserRouter>
           <div>
             {" "}
-            <Routes />
             <Switch>
               <Route
                 path="/login"
@@ -250,6 +249,7 @@ class App extends Component {
               />{" "}
               */}{" "}
             </Switch>{" "}
+            <Routes />
             <InstRoutes />
           </div>
         </BrowserRouter>

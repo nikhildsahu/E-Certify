@@ -42,6 +42,7 @@ import PendingApproval from "./PendingApproval";
 import MyRequest from "./MyRequest";
 import ChangeInst from "./ChangeInst";
 import ApproveChnageInst from "./ApproveChangeInst";
+import ApproveAccessReq from "./ApproveAccessReq";
 
 class StudentDashBoard extends Component {
   constructor(props) {
@@ -94,6 +95,13 @@ class StudentDashBoard extends Component {
   }
   componentDidMount = async () => {
     await this.profile();
+    await this.disp();
+  };
+  disp = () => {
+    // <MyDocuments
+    //   accounts={this.props.accounts}
+    //   contract={this.props.contract}
+    // />
   };
   render() {
     return (
@@ -183,7 +191,10 @@ class StudentDashBoard extends Component {
                             color="secondary"
                             style={{ marginTop: "25px" }}
                           >
-                            <a style={{ textDecoration: "none" }} href="/my">
+                            <a
+                              style={{ textDecoration: "none" }}
+                              href="/MyProfileStud"
+                            >
                               View Profile
                             </a>
                           </Button>
@@ -191,7 +202,8 @@ class StudentDashBoard extends Component {
                       </Grid>
                     </Grid>
                     <br />
-                    <hr /> <Grid container />
+                    {/* <hr />  */}
+                    <Grid container />
                     {/* <hr /> */}
                     <List style={{ textAlign: "center" }}>
                       <ListItem
@@ -272,6 +284,24 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            to="/approveaccessreq"
+                          >
+                            <Typography variant="h6">
+                              Approve Access Requests
+                            </Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
                     </List>
                   </Grid>
                 </Card>
@@ -288,6 +318,15 @@ class StudentDashBoard extends Component {
                     path="/pendapp"
                     component={() => (
                       <PendingApproval
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/approveaccessreq"
+                    component={() => (
+                      <ApproveAccessReq
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />

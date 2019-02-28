@@ -196,17 +196,17 @@ class InstituteDashBoard extends Component {
                           justify="center"
                           style={{ margin: "5%" }}
                         >
-                          <DrawerRHS
+                          {/* <DrawerRHS
                             accounts={this.props.accounts}
                             contract={this.props.contract}
-                          />
+                          /> */}
                         </Grid>
                       </Grid>
                     </Grid>
                     <Grid container />
                     {/* <hr /> */}
                     <List style={{ textAlign: "center" }}>
-                      <ListItem
+                      {/* <ListItem
                         button
                         onClick={this.showDocs.bind(this)}
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -217,7 +217,7 @@ class InstituteDashBoard extends Component {
                         <ListItemText>
                           <Typography variant="h6">Upload Documents</Typography>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                       <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}

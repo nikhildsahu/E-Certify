@@ -130,7 +130,7 @@ class TopNav extends React.Component {
           {" "}
           <a href="/my">Profile</a>
         </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Logout</MenuItem>
       </Menu>
     );
 
@@ -203,7 +203,7 @@ class TopNav extends React.Component {
                 <div />
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-                  <IconButton color="inherit">
+                  {/* <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
                       <MailIcon />
                     </Badge>
@@ -212,7 +212,7 @@ class TopNav extends React.Component {
                     <Badge badgeContent={17} color="secondary">
                       <NotificationsIcon />
                     </Badge>
-                  </IconButton>
+                  </IconButton> */}
                   <IconButton
                     aria-owns={isMenuOpen ? "material-appbar" : undefined}
                     aria-haspopup="true"
