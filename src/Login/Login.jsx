@@ -18,16 +18,7 @@ class Login extends Component {
   componentDidMount = async () => {
     await this.exist();
   };
-  go = () => {
-    if (this.state.we == true) {
-      if (this.state.stud == true) {
-        this.setState({ s: true });
-      }
-      if (this.state.inst == true) {
-        this.setState({ i: true });
-      }
-    }
-  };
+
   render() {
     return (
       // <div>
@@ -51,8 +42,13 @@ class Login extends Component {
       //   {this.state.ret ? <Redirect to="/createinst" /> : null}
       // </div>
 
-      <div>
+      <div style={{ height: "1000px", backgroundColor: "#2196f3" }}>
         <Grid container justify="center">
+          <Grid item md={12}>
+            <div>
+              <h1 style={{ height: "300px" }} />
+            </div>
+          </Grid>
           <Grid item md={3}>
             <Card>
               <Typography variant="h4" style={{ textAlign: "center" }}>
@@ -65,6 +61,17 @@ class Login extends Component {
                   color="secondary"
                   onClick={() => {
                     this.setState({ stud: true });
+                  }}
+                >
+                  Sign UP
+                </Button>{" "}
+                <br />
+                <Button
+                  style={{ margin: "25px" }}
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => {
+                    this.setState({ s: true });
                   }}
                 >
                   Login
@@ -87,6 +94,17 @@ class Login extends Component {
                     this.setState({ inst: true });
                   }}
                 >
+                  Sign Up
+                </Button>{" "}
+                <br />
+                <Button
+                  style={{ margin: "25px" }}
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => {
+                    this.setState({ i: true });
+                  }}
+                >
                   Login
                 </Button>{" "}
               </Grid>
@@ -94,9 +112,11 @@ class Login extends Component {
           </Grid>
         </Grid>
         <Card />
-        {this.go()}
+
         {this.state.stud ? <Redirect to="/createstud" /> : null}
         {this.state.inst ? <Redirect to="/createinst" /> : null}
+        {this.state.s ? <Redirect to="/StudentDashBoard" /> : null}
+        {this.state.i ? <Redirect to="/InstituteDashBoard" /> : null}
       </div>
     );
   }

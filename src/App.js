@@ -34,6 +34,7 @@ import InstituteDashBoard from "./Institute/InsituteDashBoard.jsx";
 import Dash from "./Institute/Dash.jsx";
 import Login from "./Login/Login.jsx";
 import UpdateProf from "./Student/UpdateProfile2.jsx";
+import fire from "./Fire";
 // import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
 class App extends Component {
   state = {
@@ -43,9 +44,16 @@ class App extends Component {
     contract: null,
     student: { pendinguploads: ["ssc", "hsc"] }
   };
+  OnK = () => {};
 
   componentDidMount = async () => {
     try {
+      fire
+        .database()
+        .ref()
+        .child("jjA")
+        .set("A");
+      this.OnK();
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
 

@@ -20,7 +20,8 @@ import {
   List,
   ListItem,
   ListItemText,
-  Divider
+  Divider,
+  Button
 } from "@material-ui/core";
 import MailIcon from "@material-ui/icons/Mail";
 import Lock from "@material-ui/icons/Lock";
@@ -34,7 +35,7 @@ const styles = {
     flexGrow: 1
   },
   menuButton: {
-    marginLeft: -12,
+    //marginLeft: -12,
     marginRight: 20
   }
 };
@@ -136,7 +137,7 @@ class MyProfile extends React.Component {
                     }`}
                   />
                 </Grid>
-                <Grid item md={6}>
+                <Grid item md={7}>
                   <Typography variant="h3">{this.state.name}</Typography>
                   <Typography variant="overline" style={{ fontSize: "15px" }}>
                     ADDRESS : {this.props.accounts[0]}
@@ -159,23 +160,35 @@ class MyProfile extends React.Component {
               <Grid container>
                 <Grid item md={1}>
                   <Avatar
-                    style={{ backgroundColor: "#3F51B5", padding: "25px" }}
+                    style={{ backgroundColor: "#3F51B5", padding: "10px" }}
                   >
                     <MailIcon />
                   </Avatar>
                 </Grid>
-                <Grid item md={9}>
+                <Grid item md={2}>
                   <Typography variant="headline" style={{ padding: "10px" }}>
-                    My Documents
+                    Documents
                   </Typography>
-                  <List>
+                  {/*} <List>
                     <ListItem button>
-                      <ListItemText>Adhar Card</ListItemText>
+                      <ListItemText>Aadhar Card</ListItemText>
                     </ListItem>
-
                     <ListItem button>
                       <ListItemText>Class XII Marksheet</ListItemText>
                     </ListItem>
+                  </List>*/}
+                  <List>
+                    <Typography /*style={{ padding: "10px" }}*/>
+                      <Button>Aadhar card</Button>
+                    </Typography>
+                    <Typography /*variant="headline"*/ /*style={{ padding: "5px" }}*/
+                    >
+                      <Button>XII marksheet</Button>
+                    </Typography>
+                    <Typography /*variant="headline"*/ /*style={{ padding: "5px" }}*/
+                    >
+                      <Button>X marksheet</Button>
+                    </Typography>
                   </List>
                 </Grid>
               </Grid>
@@ -187,12 +200,12 @@ class MyProfile extends React.Component {
               <Grid container>
                 <Grid item md={1}>
                   <Avatar
-                    style={{ backgroundColor: "#3F51B5", padding: "25px" }}
+                    style={{ backgroundColor: "#3F51B5", padding: "10px" }}
                   >
                     <Lock />
                   </Avatar>
                 </Grid>
-                <Grid item md={9}>
+                <Grid item md={2}>
                   <Typography variant="headline" style={{ padding: "10px" }}>
                     Co-owner
                   </Typography>{" "}
@@ -207,10 +220,10 @@ class MyProfile extends React.Component {
                     </Typography>
                   </Grid>
                   <Grid item md={2}>
-                    <Avatar
+                    {/*<Avatar
                       style={{ height: "75px", width: "75px" }}
                       src={`https://gateway.ipfs.io/ipfs/${this.state.instpic}`}
-                    />
+                    />*/}
                   </Grid>
                 </Grid>
               </Grid>
@@ -222,44 +235,69 @@ class MyProfile extends React.Component {
               <Grid container>
                 <Grid item md={1}>
                   <Avatar
-                    style={{ backgroundColor: "#3F51B5", padding: "25px" }}
+                    style={{ backgroundColor: "#3F51B5", padding: "10px" }}
                   >
                     <History />
                   </Avatar>
                 </Grid>
-                <Grid item md={9}>
-                  <Typography variant="headline" style={{ padding: "10px" }}>
+                <Grid item md={4}>
+                  <Typography
+                    variant="headline"
+                    style={{ padding: "20px" }}
+                    align="left"
+                  >
                     History of Ownership
-                  </Typography>{" "}
-                  <br />
-                </Grid>
-                <Grid container>
-                  <Grid item md={10}>
-                    <Typography variant="h5">{this.state.instname}</Typography>{" "}
-                    <Typography variant="overline">
-                      ADDRESS : {this.state.owner2}
+                  </Typography>
+                  {/*{" "}*/}
+                  {/*<br />*/}
+
+                  {/*<Grid container>*/}
+                  <List>
+                    <Typography
+                      align="left"
+                      style={{ paddingLeft: "20px", paddingTop: "5px" }}
+                    >
+                      ADDRESS : 94768369093878{/*{this.state.owner2}*/}
                     </Typography>
-                  </Grid>
-                  <Grid item md={2} style={{ marginTop: "10px" }}>
-                    <Avatar
-                      style={{ height: "75px", width: "75px" }}
-                      src={`https://gateway.ipfs.io/ipfs/${this.state.instpic}`}
-                    />
-                  </Grid>
-                  <Grid item md={10}>
-                    <Typography variant="h5">CPSKR</Typography>{" "}
-                    <Typography variant="overline">
-                      ADDRESS : 544845848484JJUHR88484
-                    </Typography>{" "}
-                  </Grid>
-                  <Grid item md={2} style={{ marginTop: "10px" }}>
-                    <Avatar
-                      style={{ height: "75px", width: "75px" }}
-                      src={`https://gateway.ipfs.io/ipfs/${this.state.instpic}`}
-                    />
-                  </Grid>
+                    <Typography
+                      align="left"
+                      style={{ paddingLeft: "20px", paddingTop: "10px" }}
+                    >
+                      2.Sri Krishna College
+                    </Typography>
+                    <Typography
+                      align="left"
+                      style={{ paddingLeft: "20px", paddingTop: "10px" }}
+                    >
+                      ADDRESS : 9037fh98fs6639{/*{this.state.owner2}*/}
+                    </Typography>
+                  </List>
+                </Grid>
+                <Typography variant="h5">{this.state.instname}</Typography>{" "}
+                <Typography variant="overline">
+                  ADDRESS : {this.state.owner2}
+                </Typography>
+              </Grid>
+              <Grid item md={2} style={{ marginTop: "10px" }}>
+                <Avatar
+                  style={{ height: "75px", width: "75px" }}
+                  src={`https://gateway.ipfs.io/ipfs/${this.state.instpic}`}
+                />
+              </Grid>
+              <Grid item md={10}>
+                <Typography variant="h5">CPSKR</Typography>{" "}
+                <Typography variant="overline">
+                  ADDRESS : 544845848484JJUHR88484
+                </Typography>{" "}
+                {/*</Grid>*/}
+                <Grid item md={2} style={{ marginTop: "10px" }}>
+                  <Avatar
+                    style={{ height: "75px", width: "75px" }}
+                    src={`https://gateway.ipfs.io/ipfs/${this.state.instpic}`}
+                  />
                 </Grid>
               </Grid>
+              {/*</Grid>*/}
             </Card>
           </Grid>
         </Grid>
