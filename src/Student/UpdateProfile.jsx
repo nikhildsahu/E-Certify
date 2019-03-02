@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import {
   Card,
   CardContent,
@@ -29,7 +30,11 @@ class UploadPage extends Component {
     contract: null,
     name: "",
     open: true,
-    profilepic: ""
+    profilepic: "",
+    flag: false,
+    email: "",
+    phoneno: "",
+    semail: "nik@gmail.com"
   };
 
   handleClickOpen = () => {
@@ -47,6 +52,11 @@ class UploadPage extends Component {
   setName = e => {
     {
       this.setState({ name: e.target.value });
+    }
+  };
+  setPhone = e => {
+    {
+      this.setState({ phoneno: e.target.value });
     }
   };
   updateProfile = async () => {
@@ -76,6 +86,7 @@ class UploadPage extends Component {
   };
 
   captureFile = event => {
+    this.ch();
     event.preventDefault();
     const file = event.target.files[0];
     console.log(event.target.files);
@@ -88,12 +99,17 @@ class UploadPage extends Component {
       this.hj(Buffer(reader.result));
     };
   };
-
+  ch = () => {
+    this.setState({ flag: true });
+    console.log(1, this.state.flag);
+  };
   hj = async a => {
     await ipfs.add(a, (err, ipfsHash) => {
       console.log(err, ipfsHash);
 
       this.setState({ profilepic: ipfsHash[0].hash });
+      this.setState({ flag: false });
+      console.log(2, this.state.flag);
     });
   };
   componentDidMount = async () => {
@@ -132,6 +148,20 @@ class UploadPage extends Component {
               onChange={this.setName.bind(this)}
             />
             <br />
+            <br />
+            <DialogContentText>Enter your Phone Number</DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="phoneno"
+              label="phone"
+              type="text"
+              fullWidth
+              value={this.state.phoneno}
+              onChange={this.setPhone.bind(this)}
+            />
+            <br />
+
             <DialogContentText style={{ marginTop: "15px" }}>
               Upload a picture
             </DialogContentText>

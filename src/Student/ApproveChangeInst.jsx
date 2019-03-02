@@ -13,15 +13,17 @@ class ApproveChnageInst extends Component {
     console.log("owner:Student:" + response[0]);
   };
   checkreq = async () => {
-    const { accounts, contract } = this.props;
-    var r = await contract.methods
-      .getChangeOwnerList(this.props.accounts[0])
-      .call();
-    console.log(r);
-    this.setState({ newinstadd: r[0] });
-    var response1 = await contract.methods.getProfile(r[0]).call();
-    this.setState({ name: response1[0] });
-    this.setState({ profilepic: response1[1] });
+    try {
+      const { accounts, contract } = this.props;
+      var r = await contract.methods
+        .getChangeOwnerList(this.props.accounts[0])
+        .call();
+      console.log(r);
+      this.setState({ newinstadd: r[0] });
+      var response1 = await contract.methods.getProfile(r[0]).call();
+      this.setState({ name: response1[0] });
+      this.setState({ profilepic: response1[1] });
+    } catch {}
   };
   changeInst = async () => {
     const { accounts, contract } = this.props;

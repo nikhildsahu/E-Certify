@@ -30,6 +30,17 @@ class ApproveUpload extends Component {
     // var r = await contract.methods.getAadhar().call();
     // console.log(r);
   };
+  getDoc = async add => {
+    const { accounts, contract } = this.props;
+    var r = await contract.methods.getUplaodReqPic(add, add).call();
+    console.log(r);
+    this.setState({ pic: r });
+    // if (r.length > 0) {
+    //   window.open(`https://gateway.ipfs.io/ipfs/${r}`);
+    // } else {
+    //   window.alert("NULL");
+    // }
+  };
 
   componentWillMount = async () => {
     this.verify();
@@ -83,10 +94,19 @@ class ApproveUpload extends Component {
                     </Typography> */}
                     <br />
                     <Grid container>
-                      <Grid item md={4} />
+                      <Grid item md={3} />
                       <Button variant="outlined" color="secondary">
                         Deny
                       </Button>
+                      <Grid item md={1} />
+                      <Button
+                        variant="outlined"
+                        onClick={this.getDoc.bind(this, jk.add)}
+                        style={{ color: "#388e3c" }}
+                      >
+                        View
+                      </Button>
+
                       <Grid item md={1} />
                       <Button
                         variant="outlined"

@@ -247,7 +247,7 @@ class InstituteDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -280,7 +280,7 @@ class InstituteDashBoard extends Component {
                             <Typography variant="h6">Request Access</Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                       <ListItem
                         button
                         onClick={this.showDocs.bind(this)}
@@ -300,7 +300,7 @@ class InstituteDashBoard extends Component {
                           </Typography>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
+                      {/* <ListItem
                         button
                         onClick={this.showDocs.bind(this)}
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -318,7 +318,7 @@ class InstituteDashBoard extends Component {
                             </Link>
                           </Typography>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                     </List>
                   </Grid>
                 </Card>

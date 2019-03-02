@@ -127,7 +127,7 @@ class StudentDashBoard extends Component {
                   style={{
                     width: "300px",
                     height: "100%",
-                    paddingTop: "100px"
+                    paddingTop: "10px"
                   }}
                 >
                   <Grid item md={12}>
@@ -233,7 +233,7 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -301,7 +301,7 @@ class StudentDashBoard extends Component {
                             </Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                     </List>
                   </Grid>
                 </Card>
