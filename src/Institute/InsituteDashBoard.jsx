@@ -207,6 +207,26 @@ class InstituteDashBoard extends Component {
                     <Grid container />
                     {/* <hr /> */}
                     <List style={{ textAlign: "center" }}>
+                      <ListItem
+                        button
+                        onClick={this.showDocs.bind(this)}
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Typography variant="h6">
+                            <Link
+                              to="/InstituteDashBoard/k"
+                              style={{ textDecoration: "none", color: "black" }}
+                            >
+                              Linked Accounts
+                            </Link>
+                          </Typography>
+                        </ListItemText>
+                      </ListItem>
+
                       {/* <ListItem
                         button
                         onClick={this.showDocs.bind(this)}
@@ -230,96 +250,6 @@ class InstituteDashBoard extends Component {
                           <Typography variant="h6">My Requests</Typography>
                         </ListItemText>
                       </ListItem> */}
-                      {/* <ListItem
-                        button
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <AssignmentIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Link
-                            to="/InstituteDashBoard/UploadApp"
-                            style={{ textDecoration: "none" }}
-                          >
-                            <Typography variant="h6">
-                              Pending Approvals
-                            </Typography>
-                          </Link>
-                        </ListItemText>
-                      </ListItem> */}
-                      <ListItem
-                        button
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <AssignmentIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Link
-                            to="/InstituteDashBoard/ChangeOwnershipApprovalbyInst"
-                            style={{ textDecoration: "none" }}
-                          >
-                            <Typography variant="h6">
-                              Change Institute Approvals
-                            </Typography>
-                          </Link>
-                        </ListItemText>
-                      </ListItem>
-                      {/* <ListItem
-                        button
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <AssignmentIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Link
-                            to="/InstituteDashBoard/RequestAccess"
-                            style={{ textDecoration: "none" }}
-                          >
-                            <Typography variant="h6">Request Access</Typography>
-                          </Link>
-                        </ListItemText>
-                      </ListItem> */}
-                      <ListItem
-                        button
-                        onClick={this.showDocs.bind(this)}
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <FolderIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Typography variant="h6">
-                            <Link
-                              to="/InstituteDashBoard/k"
-                              style={{ textDecoration: "none", color: "black" }}
-                            >
-                              Linked Accounts
-                            </Link>
-                          </Typography>
-                        </ListItemText>
-                      </ListItem>
-                      {/* <ListItem
-                        button
-                        onClick={this.showDocs.bind(this)}
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <FolderIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Typography variant="h6">
-                            <Link
-                              to="/InstituteDashBoard/ReqAccess"
-                              style={{ textDecoration: "none", color: "black" }}
-                            >
-                              Request Access
-                            </Link>
-                          </Typography>
-                        </ListItemText>
-                      </ListItem> */}
                       <ListItem
                         button
                         onClick={this.showDocs.bind(this)}
@@ -339,6 +269,80 @@ class InstituteDashBoard extends Component {
                           </Typography>
                         </ListItemText>
                       </ListItem>
+
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <AssignmentIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            to="/InstituteDashBoard/UploadApp"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Typography variant="h6">
+                              Pending Approvals
+                            </Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <AssignmentIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            to="/InstituteDashBoard/ChangeOwnershipApprovalbyInst"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Typography variant="h6">
+                              Change Institute Approvals
+                            </Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
+
+                      {/* <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <AssignmentIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            to="/InstituteDashBoard/RequestAccess"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Typography variant="h6">Request Access</Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem> */}
+
+                      {/* <ListItem
+                        button
+                        onClick={this.showDocs.bind(this)}
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Typography variant="h6">
+                            <Link
+                              to="/InstituteDashBoard/ReqAccess"
+                              style={{ textDecoration: "none", color: "black" }}
+                            >
+                              Request Access
+                            </Link>
+                          </Typography>
+                        </ListItemText>
+                      </ListItem> */}
                     </List>
                   </Grid>
                 </Card>

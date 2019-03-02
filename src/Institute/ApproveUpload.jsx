@@ -35,11 +35,11 @@ class ApproveUpload extends Component {
     var r = await contract.methods.getUplaodReqPic(add, add).call();
     console.log(r);
     this.setState({ pic: r });
-    // if (r.length > 0) {
-    //   window.open(`https://gateway.ipfs.io/ipfs/${r}`);
-    // } else {
-    //   window.alert("NULL");
-    // }
+    if (r.length > 0) {
+      window.open(`https://gateway.ipfs.io/ipfs/${r}`);
+    } else {
+      window.alert("NULL");
+    }
   };
 
   componentWillMount = async () => {

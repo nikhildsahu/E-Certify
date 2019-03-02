@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Avatar, Typography, Card, Button } from "@material-ui/core";
+import MailIcon from "@material-ui/icons/Mail";
+
 class ApproveChnageInst extends Component {
   state = { inst: "", trig: false, name: "", profilepic: "", newinstadd: "" };
   getInst = async () => {
@@ -47,14 +49,37 @@ class ApproveChnageInst extends Component {
   render() {
     return (
       <div>
+        <Grid container>
+          <Grid item md={1}>
+            <Avatar style={{ margin: "15px", backgroundColor: "#ff5722 " }}>
+              <MailIcon />
+            </Avatar>
+          </Grid>
+          <Grid item md={10}>
+            <Typography
+              variant="h4"
+              style={{
+                padding: "10px",
+                marginLeft: "15px",
+                color: "#ff5722"
+              }}
+            >
+              Pending Approvals
+              <Typography variant="caption" style={{ marginLeft: "5px" }}>
+                (Click on the Request to view the uploaded data.)
+              </Typography>
+            </Typography>
+            <hr />
+          </Grid>
+        </Grid>
         <div>
           <Grid container justify="center">
-            <Grid item md={4}>
+            <Grid item md={10}>
               <Card
                 style={{
                   margin: "50px",
                   padding: "25px",
-                  width: "500px"
+                  width: "700px"
                 }}
               >
                 <Typography variant="h4" style={{ color: "#303F9F" }}>

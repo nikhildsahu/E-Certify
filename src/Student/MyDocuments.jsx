@@ -28,7 +28,10 @@ class MyDocuments extends Component {
       open: false,
       aadhar: "",
       a: "QmafSZjxx8QaqJJBEyxRej7D9E8STGCbLzwVRgT2U7ctug",
-      hasAadhar: false
+      hasAadhar: false,
+      lastuploadername: "",
+      lastuploaderadd: "",
+      lastuploaderpic: ""
     };
   }
   handleClickOpen = () => {
@@ -81,8 +84,10 @@ class MyDocuments extends Component {
       .getUploadReqList(this.props.accounts[0])
       .call();
     console.log(t);
+
     this.handleClose();
   };
+
   getDoc = async () => {
     const { accounts, contract } = this.props;
     var r = await contract.methods.getAadhar(accounts[0]).call();
@@ -101,6 +106,16 @@ class MyDocuments extends Component {
     if (r.length > 0) {
       this.setState({ hasAadhar: true });
     }
+    var t = await contract.methods
+      .getUploadReqList(this.props.accounts[0])
+      .call();
+    console.log(t);
+    const response1 = await contract.methods.getProfile(t[t.length - 1]).call();
+    console.log(t[t.length - 1]);
+    this.setState({ lastuploaderadd: t[t.length - 1] });
+    this.setState({ lastuploadername: response1[0] });
+    this.setState({ lastuploaderpic: response1[1] });
+    // this.componentWillUpdateis.setState({});
   };
 
   render() {
@@ -160,9 +175,10 @@ class MyDocuments extends Component {
                       <Grid container>
                         <Grid item md={10}>
                           <Typography>
-                            <em>Aadhar Card</em> was uploaded on{" "}
-                            <em>26/1/2015</em> by <em>CPSKR</em>. <br />
-                            Uploader Address : <em>8855DDX84844</em>
+                            <em>Aadhar Card</em> was uploaded by{" "}
+                            <em>{this.state.lastuploadername}</em>. <br />
+                            Uploader Address :{" "}
+                            <em>{this.state.lastuploaderadd}</em>
                           </Typography>
                         </Grid>
                         <Grid item md={1}>

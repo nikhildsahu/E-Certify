@@ -177,7 +177,7 @@ class LinkedAccount extends Component {
                             <Typography variant="overline">
                               ADDRESS : {hj.a.substring(0, 10)}
                             </Typography>
-                            6
+
                             <br />
                           </Grid>
                           <Grid item md={1} />
