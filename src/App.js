@@ -257,8 +257,8 @@ class App extends Component {
               />{" "}
               */}{" "}
             </Switch>{" "}
-            <Routes />
-            <InstRoutes />
+            {/* <Routes />
+            <InstRoutes /> */}
           </div>
         </BrowserRouter>
       </div>

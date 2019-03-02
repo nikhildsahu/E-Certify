@@ -28,12 +28,27 @@ class LinkedAccount extends Component {
     this.state = {
       hj: [],
       currentState: { a: "", b: "", name: "", pic: "" },
-      newinstadd: ""
+      newinstadd: "",
+      hasAadhar: ""
     };
   }
-
+  getDoc = async a => {
+    const { accounts, contract } = this.props;
+    var r = await contract.methods.getAadhar(a).call();
+    console.log(r);
+    if (r.length > 0) {
+      window.open(`https://gateway.ipfs.io/ipfs/${r}`);
+    } else {
+      window.alert("NULL");
+    }
+  };
   componentDidMount = async () => {
+    const { accounts, contract } = this.props;
     await this.verify();
+    var r = await contract.methods.getAadhar(accounts[0]).call();
+    if (r.length > 0) {
+      this.setState({ hasAadhar: true });
+    }
   };
   verify = async () => {
     const { accounts, contract } = this.props;
@@ -95,6 +110,9 @@ class LinkedAccount extends Component {
       .getUploadReqList(this.state.currentState.a)
       .call();
     console.log(uplist);
+    {
+      this.handleClose();
+    }
   };
 
   hj = async a => {
@@ -159,6 +177,7 @@ class LinkedAccount extends Component {
                             <Typography variant="overline">
                               ADDRESS : {hj.a.substring(0, 10)}
                             </Typography>
+                            6
                             <br />
                           </Grid>
                           <Grid item md={1} />
@@ -179,7 +198,7 @@ class LinkedAccount extends Component {
                           <Grid item md={1} />
                           <Grid item md={1}>
                             <br />
-                            <Button
+                            {/* <Button
                               onClick={() => {
                                 this.setState({
                                   open1: !this.state.open1,
@@ -190,7 +209,7 @@ class LinkedAccount extends Component {
                               variant="outlined"
                             >
                               Change Institute
-                            </Button>
+                            </Button> */}
                           </Grid>
                         </Grid>
                       </Grid>
@@ -247,13 +266,15 @@ class LinkedAccount extends Component {
                         <Button>
                           <input onChange={this.captureFile} type="file" />
                         </Button>
-                      </ListItem>
-                      <Divider />
-                      <ListItem button>
-                        <ListItemText>Class X Marksheet</ListItemText>
-                        <Button>
-                          {" "}
-                          <input onChange={this.captureFile} type="file" />
+
+                        <Button
+                          onClick={this.getDoc.bind(
+                            this,
+                            this.state.currentState.a
+                          )}
+                          variant="outlined"
+                        >
+                          view
                         </Button>
                       </ListItem>
                       <Divider />

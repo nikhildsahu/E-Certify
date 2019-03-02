@@ -67,7 +67,7 @@ class StudentDashBoard extends Component {
     const response1 = await contract.methods.getProfile(accounts[0]).call();
     this.setState({ name: response1[0] });
     this.setState({ profilepic: response1[1] });
-    const response3 = await contract.methods.getAadhar().call();
+    const response3 = await contract.methods.getAadhar(accounts[0]).call();
     this.setState({ aadhar: response3 });
     console.log(response3);
     // const response2 = await contract.methods
@@ -220,7 +220,7 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -232,8 +232,8 @@ class StudentDashBoard extends Component {
                             <Typography variant="h6">My Requests</Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
-                      <ListItem
+                      </ListItem> */}
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -250,7 +250,7 @@ class StudentDashBoard extends Component {
                             </Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                       <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -266,7 +266,7 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -283,8 +283,8 @@ class StudentDashBoard extends Component {
                             </Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
-                      <ListItem
+                      </ListItem> */}
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -301,7 +301,7 @@ class StudentDashBoard extends Component {
                             </Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                       <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}

@@ -44,7 +44,6 @@ class ChangeOwnershipApprovalbyInst extends Component {
   render() {
     return (
       <div syle={{ marginTop: "1000px" }}>
-        iohiuhiu
         {this.state.array.map(jk => {
           return (
             <div>

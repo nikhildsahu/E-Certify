@@ -22,7 +22,8 @@ class MultiSigCreationInst extends Component {
     tnc: false,
     txt: "",
     InstAdd: "",
-    UserAdd: ""
+    UserAdd: "",
+    go: false
   };
   created = async () => {
     const { accounts, contract } = this.props;
@@ -46,7 +47,9 @@ class MultiSigCreationInst extends Component {
   handleChange = name => event => {
     this.setState({ tnc: true });
   };
-
+  set = () => {
+    this.setState({ go: true });
+  };
   componentDidMount = async () => {
     try {
       // Get network provider and web3 instance.
@@ -148,6 +151,7 @@ class MultiSigCreationInst extends Component {
                     variant="outlined"
                     color="primary"
                     style={{ position: "unset", marginBottom: "15px" }}
+                    onClick={this.set}
                   >
                     Go To Dashboard{" "}
                   </Button>
@@ -157,6 +161,7 @@ class MultiSigCreationInst extends Component {
             </Card>
           </Grid>
         </Grid>
+        {this.state.go ? <Redirect to="/InstituteDashBoard" /> : null}
       </div>
     );
   }

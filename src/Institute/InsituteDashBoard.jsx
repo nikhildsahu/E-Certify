@@ -40,6 +40,7 @@ import ApproveUpload from "./ApproveUpload";
 import DrawerRHS from "../CommonComponents/DrawerRHS";
 import LinkedAccount from "./LinkedAccounts";
 import RequestAccess from "./RequestAccess";
+import Access from "./Access";
 
 class InstituteDashBoard extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class InstituteDashBoard extends Component {
     const response1 = await contract.methods.getProfile(accounts[0]).call();
     this.setState({ name: response1[0] });
     this.setState({ profilepic: response1[1] });
-    const response3 = await contract.methods.getAadhar().call();
+    const response3 = await contract.methods.getAadhar(accounts[0]).call();
     this.setState({ aadhar: response3 });
     console.log(response3);
     // const response2 = await contract.methods
@@ -218,7 +219,7 @@ class InstituteDashBoard extends Component {
                           <Typography variant="h6">Upload Documents</Typography>
                         </ListItemText>
                       </ListItem> */}
-                      <ListItem
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -228,8 +229,8 @@ class InstituteDashBoard extends Component {
                         <ListItemText>
                           <Typography variant="h6">My Requests</Typography>
                         </ListItemText>
-                      </ListItem>
-                      <ListItem
+                      </ListItem> */}
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -246,7 +247,7 @@ class InstituteDashBoard extends Component {
                             </Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                       <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -265,7 +266,7 @@ class InstituteDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -280,7 +281,7 @@ class InstituteDashBoard extends Component {
                             <Typography variant="h6">Request Access</Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                       <ListItem
                         button
                         onClick={this.showDocs.bind(this)}
@@ -300,7 +301,7 @@ class InstituteDashBoard extends Component {
                           </Typography>
                         </ListItemText>
                       </ListItem>
-                      <ListItem
+                      {/* <ListItem
                         button
                         onClick={this.showDocs.bind(this)}
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -315,6 +316,25 @@ class InstituteDashBoard extends Component {
                               style={{ textDecoration: "none", color: "black" }}
                             >
                               Request Access
+                            </Link>
+                          </Typography>
+                        </ListItemText>
+                      </ListItem> */}
+                      <ListItem
+                        button
+                        onClick={this.showDocs.bind(this)}
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Typography variant="h6">
+                            <Link
+                              to="/InstituteDashBoard/acc"
+                              style={{ textDecoration: "none", color: "black" }}
+                            >
+                              Access Rights
                             </Link>
                           </Typography>
                         </ListItemText>
@@ -346,6 +366,15 @@ class InstituteDashBoard extends Component {
                     path="/InstituteDashBoard/k"
                     component={() => (
                       <LinkedAccount
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/InstituteDashBoard/acc"
+                    component={() => (
+                      <Access
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />

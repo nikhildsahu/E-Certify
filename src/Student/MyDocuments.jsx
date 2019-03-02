@@ -57,7 +57,7 @@ class MyDocuments extends Component {
     await contract.methods
       .uploadAadhar(this.state.aadhar)
       .send({ from: accounts[0] });
-    const response = await contract.methods.getAadhar().call();
+    const response = await contract.methods.getAadhar(accounts[0]).call();
 
     this.setState({ aadhar: response }); //check once
     console.log(this.state);
@@ -85,7 +85,7 @@ class MyDocuments extends Component {
   };
   getDoc = async () => {
     const { accounts, contract } = this.props;
-    var r = await contract.methods.getAadhar().call();
+    var r = await contract.methods.getAadhar(accounts[0]).call();
     console.log(r);
     if (r.length > 0) {
       window.open(`https://gateway.ipfs.io/ipfs/${r}`);
@@ -97,7 +97,7 @@ class MyDocuments extends Component {
   componentDidMount = async () => {
     const { accounts, contract } = this.props;
 
-    var r = await contract.methods.getAadhar().call();
+    var r = await contract.methods.getAadhar(accounts[0]).call();
     if (r.length > 0) {
       this.setState({ hasAadhar: true });
     }
@@ -114,7 +114,7 @@ class MyDocuments extends Component {
                 marginTop: "30px",
                 marginLeft: "50px",
                 marginRight: "50px",
-                width: "1000px"
+                width: "800px"
               }}
             >
               <Grid container>
@@ -142,7 +142,7 @@ class MyDocuments extends Component {
                 </Grid>{" "}
                 {/* array map ExpPanel.jsx */}
                 {this.state.hasAadhar ? (
-                  <ExpansionPanel style={{ width: "1000px" }}>
+                  <ExpansionPanel style={{ width: "800px" }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                       <Avatar
                         style={{
