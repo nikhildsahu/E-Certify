@@ -29,14 +29,13 @@ class ApproveChnageInst extends Component {
   };
   changeInst = async () => {
     const { accounts, contract } = this.props;
+    const response = await contract.methods.getOwners(accounts[0]).call();
 
+    this.setState({ inst: response[1] });
     await contract.methods
       .approveChangeOwnerINSTReqbyStud(this.state.inst)
       .send({ from: accounts[0] });
 
-    const response = await contract.methods.getOwners(accounts[0]).call();
-
-    this.setState({ inst: response[1] });
     // this.setState({ owner2: response[1] });
     console.log(" owners");
     console.log("owner:Institute:" + response[1]);

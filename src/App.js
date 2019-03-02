@@ -35,6 +35,9 @@ import Dash from "./Institute/Dash.jsx";
 import Login from "./Login/Login.jsx";
 import UpdateProf from "./Student/UpdateProfile2.jsx";
 import fire from "./Fire";
+import SignUpGoogle from "./Auth/SignUpG.jsx";
+import SignUpGoogleI from "./Auth/SignUpI";
+
 // import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
 class App extends Component {
   state = {
@@ -125,6 +128,24 @@ class App extends Component {
                 path="/CreateStudMultisig"
                 component={() => (
                   <MultiSigCreationStud
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/GoogleLoginS"
+                component={() => (
+                  <SignUpGoogle
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/GoogleLoginI"
+                component={() => (
+                  <SignUpGoogleI
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />

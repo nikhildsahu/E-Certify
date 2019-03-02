@@ -41,6 +41,7 @@ import DrawerRHS from "../CommonComponents/DrawerRHS";
 import LinkedAccount from "./LinkedAccounts";
 import RequestAccess from "./RequestAccess";
 import Access from "./Access";
+import FreeAccess from "./FreeAccess";
 
 class InstituteDashBoard extends Component {
   constructor(props) {
@@ -187,7 +188,10 @@ class InstituteDashBoard extends Component {
                             color="secondary"
                             style={{ marginTop: "25px" }}
                           >
-                            <a href="/my" style={{ textDecoration: "none" }}>
+                            <a
+                              href="/MyProfileInst"
+                              style={{ textDecoration: "none" }}
+                            >
                               View Profile
                             </a>
                           </Button>
@@ -306,6 +310,22 @@ class InstituteDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <AssignmentIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            to="/InstituteDashBoard/FreeAccess"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Typography variant="h6">Free Access</Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
 
                       {/* <ListItem
                         button
@@ -360,6 +380,15 @@ class InstituteDashBoard extends Component {
                     path="/InstituteDashBoard/ChangeOwnershipApprovalbyInst"
                     component={() => (
                       <ChangeOwnershipApprovalbyInst
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/InstituteDashBoard/FreeAccess"
+                    component={() => (
+                      <FreeAccess
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />

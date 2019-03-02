@@ -131,6 +131,15 @@ class LinkedAccount extends Component {
       .getChangeOwnerList(this.state.currentState.a)
       .call();
     console.log(r);
+    // await contract.methods
+    //   .approveChangeOwnerINSTReqbyStud(this.state.currentState.a)
+    //   .send({ from: accounts[0] });
+
+    const response = await contract.methods
+      .getOwners(this.state.currentState.a)
+      .call();
+    console.log("owner:Institute:" + response[1]);
+    console.log("owner:Student:" + response[0]);
   };
 
   render() {
@@ -198,7 +207,7 @@ class LinkedAccount extends Component {
                           <Grid item md={1} />
                           <Grid item md={1}>
                             <br />
-                            {/* <Button
+                            <Button
                               onClick={() => {
                                 this.setState({
                                   open1: !this.state.open1,
@@ -209,7 +218,7 @@ class LinkedAccount extends Component {
                               variant="outlined"
                             >
                               Change Institute
-                            </Button> */}
+                            </Button>
                           </Grid>
                         </Grid>
                       </Grid>

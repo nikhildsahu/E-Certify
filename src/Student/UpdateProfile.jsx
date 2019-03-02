@@ -22,6 +22,8 @@ import SimpleStorageContract from "../contracts/SimpleStorage.json";
 import getWeb3 from "../utils/getWeb3";
 import ipfs from "../ipfs";
 import { Redirect } from "react-router-dom";
+import fire from "../Fire";
+
 class UploadPage extends Component {
   state = {
     storageValue: 0,
@@ -77,8 +79,35 @@ class UploadPage extends Component {
     const response = await contract.methods.getProfile(accounts[0]).call();
     console.log(response[0] + "updated");
     {
+      this.firebaseset();
+    }
+    {
       this.handleClose();
     }
+  };
+  firebaseset = () => {
+    const { accounts, contract } = this.props;
+    fire
+      .database()
+      .ref()
+      .child("UID")
+      .child(accounts[0])
+      .child("name")
+      .set(this.state.name);
+    fire
+      .database()
+      .ref()
+      .child("UID")
+      .child(accounts[0])
+      .child("phone")
+      .set(this.state.phoneno);
+    fire
+      .database()
+      .ref()
+      .child("UID")
+      .child(accounts[0])
+      .child("profilepic")
+      .set(this.state.profilepic);
   };
   ClickOpenGetProfile = async () => {
     const { accounts, contract } = this.props;
@@ -120,6 +149,8 @@ class UploadPage extends Component {
   };
   componentDidMount = async () => {
     console.log("idhsiod");
+    var e = fire.auth().currentUser.email;
+    this.setState({ email: e });
   };
   render() {
     return (

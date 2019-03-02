@@ -65,7 +65,7 @@ class MyProfile extends React.Component {
     const response1 = await contract.methods.getProfile(accounts[0]).call();
     this.setState({ name: response1[0] });
     this.setState({ profilepic: response1[1] });
-    const response3 = await contract.methods.getAadhar().call();
+    const response3 = await contract.methods.getAadhar(accounts[0]).call();
     this.setState({ aadhar: response3 });
 
     const response2 = await contract.methods.getProfile(response[1]).call();
@@ -92,7 +92,16 @@ class MyProfile extends React.Component {
   ret = () => {
     this.setState({ ret: true });
   };
-
+  getDoc = async () => {
+    const { accounts, contract } = this.props;
+    var r = await contract.methods.getAadhar(accounts[0]).call();
+    console.log(r);
+    if (r.length > 0) {
+      window.open(`https://gateway.ipfs.io/ipfs/${r}`);
+    } else {
+      window.alert("NULL");
+    }
+  };
   render() {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
@@ -179,16 +188,18 @@ class MyProfile extends React.Component {
                   </List>*/}
                   <List>
                     <Typography /*style={{ padding: "10px" }}*/>
-                      <Button>Aadhar card</Button>
+                      <Button onClick={this.getDoc.bind(this)}>
+                        Aadhar card
+                      </Button>
                     </Typography>
-                    <Typography /*variant="headline"*/ /*style={{ padding: "5px" }}*/
+                    {/* <Typography variant="headline" style={{ padding: "5px" }}
                     >
                       <Button>XII marksheet</Button>
                     </Typography>
-                    <Typography /*variant="headline"*/ /*style={{ padding: "5px" }}*/
+                    <Typography variant="headline" style={{ padding: "5px" }}
                     >
                       <Button>X marksheet</Button>
-                    </Typography>
+                    </Typography> */}
                   </List>
                 </Grid>
               </Grid>
