@@ -29,7 +29,9 @@ class UpdateProf extends Component {
     contract: null,
     name: "",
     open: true,
-    profilepic: ""
+    profilepic: "",
+    phoneno: "",
+    semail: "nik@gmail.com"
   };
 
   handleClickOpen = () => {
@@ -49,13 +51,24 @@ class UpdateProf extends Component {
       this.setState({ name: e.target.value });
     }
   };
+  setPhone = e => {
+    {
+      this.setState({ phoneno: e.target.value });
+    }
+  };
   updateProfile = async () => {
     const { accounts, contract } = this.props;
 
     console.log(contract);
 
     await contract.methods
-      .updateProf(this.state.name, this.state.profilepic, accounts[0])
+      .updateProf(
+        this.state.name,
+        this.state.profilepic,
+        accounts[0],
+        this.state.phoneno,
+        this.state.semail
+      )
       .send({ from: accounts[0] });
 
     const response = await contract.methods.getProfile(accounts[0]).call();
@@ -130,6 +143,19 @@ class UpdateProf extends Component {
               fullWidth
               value={this.state.name}
               onChange={this.setName.bind(this)}
+            />
+            <br />
+            <br />
+            <DialogContentText>Enter your Phone Number</DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="phoneno"
+              label="phone"
+              type="text"
+              fullWidth
+              value={this.state.phoneno}
+              onChange={this.setPhone.bind(this)}
             />
             <br />
             <DialogContentText style={{ marginTop: "15px" }}>

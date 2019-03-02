@@ -43,7 +43,7 @@ import MyRequest from "./MyRequest";
 import ChangeInst from "./ChangeInst";
 import ApproveChnageInst from "./ApproveChangeInst";
 import ApproveAccessReq from "./ApproveAccessReq";
-
+import GiveAccessTo from "./GiveAccessTo";
 class StudentDashBoard extends Component {
   constructor(props) {
     super(props);
@@ -233,7 +233,7 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
-                      {/* <ListItem
+                      <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -301,7 +301,23 @@ class StudentDashBoard extends Component {
                             </Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem> */}
+                      </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            style={{ textDecoration: "none" }}
+                            to="/giveaccess"
+                          >
+                            <Typography variant="h6">Give Access</Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
                     </List>
                   </Grid>
                 </Card>
@@ -327,6 +343,15 @@ class StudentDashBoard extends Component {
                     path="/approveaccessreq"
                     component={() => (
                       <ApproveAccessReq
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/giveaccess"
+                    component={() => (
+                      <GiveAccessTo
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />

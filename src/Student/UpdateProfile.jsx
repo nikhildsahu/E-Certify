@@ -65,7 +65,13 @@ class UploadPage extends Component {
     console.log(contract);
 
     await contract.methods
-      .updateProf(this.state.name, this.state.profilepic, accounts[0])
+      .updateProf(
+        this.state.name,
+        this.state.profilepic,
+        accounts[0],
+        this.state.phoneno,
+        this.state.semail
+      )
       .send({ from: accounts[0] });
 
     const response = await contract.methods.getProfile(accounts[0]).call();
