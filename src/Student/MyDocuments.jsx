@@ -31,7 +31,8 @@ class MyDocuments extends Component {
       hasAadhar: false,
       lastuploadername: "",
       lastuploaderadd: "",
-      lastuploaderpic: ""
+      lastuploaderpic: "",
+      aa: ""
     };
   }
   handleClickOpen = () => {
@@ -168,14 +169,14 @@ class MyDocuments extends Component {
                         <AssignmentIcon />
                       </Avatar>
                       <Typography style={{ margin: "10px" }}>
-                        Aadhar Card
+                        B.Tech Degree
                       </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                       <Grid container>
                         <Grid item md={10}>
                           <Typography>
-                            <em>Aadhar Card</em> was uploaded by{" "}
+                            <em>B.Tech Degree </em> was uploaded by{" "}
                             <em>{this.state.lastuploadername}</em>. <br />
                             Uploader Address :{" "}
                             <em>{this.state.lastuploaderadd}</em>
@@ -241,6 +242,24 @@ class MyDocuments extends Component {
                         <input onChange={this.captureFile} type="file" />{" "}
                       </Button>
                       <Button>Upload </Button>
+                    </DialogContent>
+                    <DialogContent>
+                      <DialogContentText style={{ marginTop: "15px" }}>
+                        Upload a picture
+                      </DialogContentText>
+                      <Grid container justify="center">
+                        <img
+                          src={`https://gateway.ipfs.io/ipfs/${
+                            this.state.aadhar
+                          }`}
+                          alt="Your Uploaded Docs Here"
+                          style={{
+                            margin: "20px",
+                            height: "250px",
+                            width: "250px"
+                          }}
+                        />
+                      </Grid>
                     </DialogContent>
                     <DialogActions>
                       <Button onClick={this.handleClose} color="primary">

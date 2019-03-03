@@ -151,7 +151,11 @@ class LinkedAccount extends Component {
           marginTop: "90px"
         }}
       >
-        <h1>Linked Accounts </h1>
+        <Typography variant="h4" style={{ padding: "20px", color: "#3F51B5" }}>
+          Linked Accounts
+          <br />
+        </Typography>
+
         {this.state.hj.map(hj => {
           return (
             <div>
@@ -271,7 +275,7 @@ class LinkedAccount extends Component {
                     </DialogContentText>
                     <List style={{ width: "500px" }}>
                       <ListItem button>
-                        <ListItemText>Adhar Card</ListItemText>
+                        <ListItemText>B.Tech Degree</ListItemText>
                         <Button>
                           <input onChange={this.captureFile} type="file" />
                         </Button>

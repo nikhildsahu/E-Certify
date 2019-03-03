@@ -67,10 +67,8 @@ class ChangeOwnershipApprovalbyInst extends Component {
                     <br />
                     <Typography variant="subheading">
                       <em>{this.props.requester} </em> has requested for{" "}
-                      <em style={{ color: "#d50000" }}>
-                        {jk.b.substring(0, 10)}
-                      </em>{" "}
-                      of your account!
+                      <em style={{ color: "#d50000" }}>{jk.b}</em> of your
+                      account!
                     </Typography>
                     <br />
                     <Grid container>

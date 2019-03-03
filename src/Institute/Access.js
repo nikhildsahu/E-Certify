@@ -66,7 +66,10 @@ class Access extends Component {
           marginTop: "90px"
         }}
       >
-        <h1> Access Rights </h1>
+        <Typography variant="h4" style={{ padding: "20px", color: "#3F51B5" }}>
+          Access Rights
+          <br />
+        </Typography>
         {this.state.hj.map(hj => {
           return (
             <div>
@@ -168,7 +171,7 @@ class Access extends Component {
                     </DialogContentText>
                     <List style={{ width: "500px" }}>
                       <ListItem button>
-                        <ListItemText>Adhar Card</ListItemText>
+                        <ListItemText>B.Tech Degree</ListItemText>
                         <ButtonBase
                           onClick={() => {
                             if (hj.propic.length > 0) {

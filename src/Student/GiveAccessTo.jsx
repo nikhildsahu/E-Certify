@@ -84,9 +84,9 @@ class GiveAccessTo extends Component {
               </Button>
             </Card>
           </Grid>
-          {/* <Grid item md={8} /> */}
-
-          <Grid item md={12}>
+          <Grid item md={6} />
+          <Grid item md={1} />
+          <Grid item md={4}>
             {this.state.flag ? (
               <div>
                 <Grid container justify="center">
@@ -118,7 +118,7 @@ class GiveAccessTo extends Component {
                             {this.state.name}
                           </Typography>
                           <Typography variant="overline">
-                            ADDRESS : {this.state.newinstadd}
+                            ADDRESS : {this.state.newinstadd.substring(0, 10)}
                           </Typography>
                           <br /> <br />
                         </Grid>

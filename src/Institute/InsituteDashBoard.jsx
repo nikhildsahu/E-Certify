@@ -314,7 +314,7 @@ class InstituteDashBoard extends Component {
                         </ListItemText>
                       </ListItem>
 
-                      <ListItem
+                      {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
                       >
@@ -329,7 +329,7 @@ class InstituteDashBoard extends Component {
                             <Typography variant="h6">Otp Access</Typography>
                           </Link>
                         </ListItemText>
-                      </ListItem>
+                      </ListItem> */}
                       {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}

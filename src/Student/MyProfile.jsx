@@ -189,7 +189,7 @@ class MyProfile extends React.Component {
                   <List>
                     <Typography /*style={{ padding: "10px" }}*/>
                       <Button onClick={this.getDoc.bind(this)}>
-                        Aadhar card
+                        B.Tech Degree
                       </Button>
                     </Typography>
                     {/* <Typography variant="headline" style={{ padding: "5px" }}
@@ -239,7 +239,7 @@ class MyProfile extends React.Component {
                 </Grid>
               </Grid>
             </Card>
-            <Card
+            {/* <Card
               className="shadow"
               style={{ marginTop: "20px", padding: "15px" }}
             >
@@ -259,16 +259,13 @@ class MyProfile extends React.Component {
                   >
                     History of Ownership
                   </Typography>
-                  {/*{" "}*/}
-                  {/*<br />*/}
-
-                  {/*<Grid container>*/}
+                 
                   <List>
                     <Typography
                       align="left"
                       style={{ paddingLeft: "20px", paddingTop: "5px" }}
                     >
-                      ADDRESS : 94768369093878{/*{this.state.owner2}*/}
+                      ADDRESS : 94768369093878
                     </Typography>
                     <Typography
                       align="left"
@@ -280,7 +277,7 @@ class MyProfile extends React.Component {
                       align="left"
                       style={{ paddingLeft: "20px", paddingTop: "10px" }}
                     >
-                      ADDRESS : 9037fh98fs6639{/*{this.state.owner2}*/}
+                      ADDRESS : 9037fh98fs6639
                     </Typography>
                   </List>
                 </Grid>
@@ -300,7 +297,7 @@ class MyProfile extends React.Component {
                 <Typography variant="overline">
                   ADDRESS : 544845848484JJUHR88484
                 </Typography>{" "}
-                {/*</Grid>*/}
+               
                 <Grid item md={2} style={{ marginTop: "10px" }}>
                   <Avatar
                     style={{ height: "75px", width: "75px" }}
@@ -308,8 +305,8 @@ class MyProfile extends React.Component {
                   />
                 </Grid>
               </Grid>
-              {/*</Grid>*/}
-            </Card>
+             
+            </Card> */}
           </Grid>
         </Grid>
         {this.state.ret ? <Redirect to="/StudentDashBoard" /> : null}
