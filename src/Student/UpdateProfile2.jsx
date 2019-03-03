@@ -21,6 +21,8 @@ import SimpleStorageContract from "../contracts/SimpleStorage.json";
 import getWeb3 from "../utils/getWeb3";
 import ipfs from "../ipfs";
 import { Redirect } from "react-router-dom";
+import fire from "../Fire";
+
 class UpdateProf extends Component {
   state = {
     storageValue: 0,
@@ -111,7 +113,11 @@ class UpdateProf extends Component {
   };
   componentDidMount = async () => {
     console.log("idhsiod");
+    var e = fire.auth().currentUser.email;
+    this.setState({ email: e });
+    console.log(e);
   };
+
   render() {
     return (
       <div>
@@ -126,6 +132,7 @@ class UpdateProf extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
+          disableEscapeKeyDown
         >
           <DialogTitle id="form-dialog-title">
             <Typography style={{ color: "#1a237e" }} variant="h4">

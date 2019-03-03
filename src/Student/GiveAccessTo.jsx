@@ -49,7 +49,8 @@ class GiveAccessTo extends Component {
   render() {
     return (
       <div>
-        <Grid container justify="center">
+        <Grid container>
+          <Grid item md={2} />
           <Grid item md={4}>
             <Card style={{ margin: "50px", padding: "25px", width: "500px" }}>
               <Typography variant="h4" style={{ color: "#303F9F" }}>

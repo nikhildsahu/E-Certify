@@ -86,28 +86,45 @@ class UploadPage extends Component {
     }
   };
   firebaseset = () => {
-    const { accounts, contract } = this.props;
-    fire
-      .database()
-      .ref()
-      .child("UID")
-      .child(accounts[0])
-      .child("name")
-      .set(this.state.name);
-    fire
-      .database()
-      .ref()
-      .child("UID")
-      .child(accounts[0])
-      .child("phone")
-      .set(this.state.phoneno);
-    fire
-      .database()
-      .ref()
-      .child("UID")
-      .child(accounts[0])
-      .child("profilepic")
-      .set(this.state.profilepic);
+    try {
+      const { accounts, contract } = this.props;
+
+      fire
+        .database()
+        .ref()
+        .child("List")
+        .child(accounts[0])
+        .set(this.state.email);
+
+      fire
+        .database()
+        .ref()
+        .child("UID")
+        .child(accounts[0])
+        .child("name")
+        .set(this.state.name);
+      fire
+        .database()
+        .ref()
+        .child("UID")
+        .child(accounts[0])
+        .child("email")
+        .set(this.state.email);
+      fire
+        .database()
+        .ref()
+        .child("UID")
+        .child(accounts[0])
+        .child("phone")
+        .set(this.state.phoneno);
+      fire
+        .database()
+        .ref()
+        .child("UID")
+        .child(accounts[0])
+        .child("profilepic")
+        .set(this.state.profilepic);
+    } catch (fipu) {}
   };
   ClickOpenGetProfile = async () => {
     const { accounts, contract } = this.props;
@@ -151,6 +168,7 @@ class UploadPage extends Component {
     console.log("idhsiod");
     var e = fire.auth().currentUser.email;
     this.setState({ email: e });
+    console.log(e);
   };
   render() {
     return (
@@ -166,6 +184,7 @@ class UploadPage extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
+          disableEscapeKeyDown
         >
           <DialogTitle id="form-dialog-title">
             <Typography style={{ color: "#1a237e" }} variant="h4">

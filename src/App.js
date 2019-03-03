@@ -37,6 +37,8 @@ import UpdateProf from "./Student/UpdateProfile2.jsx";
 import fire from "./Fire";
 import SignUpGoogle from "./Auth/SignUpG.jsx";
 import SignUpGoogleI from "./Auth/SignUpI";
+import OtpI from "./Login/OtpI.jsx";
+import OtpS from "./Login/OtpS.jsx";
 
 // import ChangeOwnershipbyStud from "./Student/ChangeOwnershipbyStud";
 class App extends Component {
@@ -146,6 +148,24 @@ class App extends Component {
                 path="/GoogleLoginI"
                 component={() => (
                   <SignUpGoogleI
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/OtpI"
+                component={() => (
+                  <OtpI
+                    accounts={this.state.accounts}
+                    contract={this.state.contract}
+                  />
+                )}
+              />
+              <Route
+                path="/OtpS"
+                component={() => (
+                  <OtpS
                     accounts={this.state.accounts}
                     contract={this.state.contract}
                   />

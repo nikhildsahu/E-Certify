@@ -110,11 +110,11 @@ class MyDocuments extends Component {
       .getUploadReqList(this.props.accounts[0])
       .call();
     console.log(t);
-    const response1 = await contract.methods.getProfile(t[t.length - 1]).call();
-    console.log(t[t.length - 1]);
-    this.setState({ lastuploaderadd: t[t.length - 1] });
-    this.setState({ lastuploadername: response1[0] });
-    this.setState({ lastuploaderpic: response1[1] });
+    // const response1 = await contract.methods.getProfile(t[t.length - 1]).call();
+    // console.log(t[t.length - 1]);
+    // this.setState({ lastuploaderadd: t[t.length - 1] });
+    // this.setState({ lastuploadername: response1[0] });
+    // this.setState({ lastuploaderpic: response1[1] });
     // this.componentWillUpdateis.setState({});
   };
 

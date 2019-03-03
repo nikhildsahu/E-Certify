@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import firebase from "firebase";
 import fire from "../Fire";
 import { Redirect } from "react-router-dom";
+import { ButtonBase, Avatar, Card } from "@material-ui/core";
 
 var provider = new firebase.auth.GoogleAuthProvider();
 class SignUpGoogle extends Component {
@@ -56,14 +57,29 @@ class SignUpGoogle extends Component {
   render() {
     return (
       <div>
-        <Button
-          onClick={this.c.bind(this, this)}
-          variant="contained"
-          color="secondary"
-          style={{ width: "80px", marginTop: 20, height: "100px" }}
-        />
-
-        {this.state.loggin ? <Redirect to="/createinst" /> : null}
+        <Card
+          className="shadow"
+          style={{
+            position: "absolute",
+            top: "200px",
+            left: "700px",
+            width: "500px",
+            height: "150px"
+          }}
+        >
+          <div style={{ padding: "10px" }}>
+            <ButtonBase onClick={this.c.bind(this, this)}>
+              <Avatar>
+                <img
+                  src="https://blog.hubspot.com/hubfs/image8-2.jpg"
+                  style={{ height: "50px" }}
+                />
+              </Avatar>
+            </ButtonBase>
+            <h4>Sign in with Google !</h4>
+            {this.state.loggin ? <Redirect to="/OtpI" /> : null}
+          </div>
+        </Card>
       </div>
     );
   }

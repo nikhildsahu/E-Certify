@@ -41,7 +41,7 @@ import DrawerRHS from "../CommonComponents/DrawerRHS";
 import LinkedAccount from "./LinkedAccounts";
 import RequestAccess from "./RequestAccess";
 import Access from "./Access";
-import FreeAccess from "./FreeAccess";
+import OtpAccess from "./OtpAccess";
 
 class InstituteDashBoard extends Component {
   constructor(props) {
@@ -119,7 +119,10 @@ class InstituteDashBoard extends Component {
           <div>
             <Grid container>
               <Grid item md={12}>
-                <TopNav />
+                <TopNav
+                  accounts={this.props.accounts}
+                  contract={this.props.contract}
+                />
               </Grid>
               <Grid item md={12} style={{ padding: "40px" }}>
                 {" "}
@@ -310,6 +313,7 @@ class InstituteDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
+
                       <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -319,14 +323,13 @@ class InstituteDashBoard extends Component {
                         </ListItemAvatar>
                         <ListItemText>
                           <Link
-                            to="/InstituteDashBoard/FreeAccess"
+                            to="/InstituteDashBoard/OtpAccess"
                             style={{ textDecoration: "none" }}
                           >
-                            <Typography variant="h6">Free Access</Typography>
+                            <Typography variant="h6">Otp Access</Typography>
                           </Link>
                         </ListItemText>
                       </ListItem>
-
                       {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -385,10 +388,11 @@ class InstituteDashBoard extends Component {
                       />
                     )}
                   />
+
                   <Route
-                    path="/InstituteDashBoard/FreeAccess"
+                    path="/InstituteDashBoard/OtpAccess"
                     component={() => (
-                      <FreeAccess
+                      <OtpAccess
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />

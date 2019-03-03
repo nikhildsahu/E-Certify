@@ -44,6 +44,10 @@ import ChangeInst from "./ChangeInst";
 import ApproveChnageInst from "./ApproveChangeInst";
 import ApproveAccessReq from "./ApproveAccessReq";
 import GiveAccessTo from "./GiveAccessTo";
+import FreeAccess from "./FreeAccess";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import PastHistory from "./PastHistory";
+
 class StudentDashBoard extends Component {
   constructor(props) {
     super(props);
@@ -110,7 +114,10 @@ class StudentDashBoard extends Component {
           <div>
             <Grid container justify="flex-start">
               <Grid item md={12}>
-                <TopNav />
+                <TopNav
+                  accounts={this.props.accounts}
+                  contract={this.props.contract}
+                />
               </Grid>
               <Grid item md={12} style={{ padding: "40px" }}>
                 {" "}
@@ -251,21 +258,7 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem> */}
-                      <ListItem
-                        button
-                        style={{ width: "300px", color: "#3F51B5" }}
-                      >
-                        <ListItemAvatar>
-                          <FolderIcon />
-                        </ListItemAvatar>
-                        <ListItemText>
-                          <Link style={{ textDecoration: "none" }} to="/chinst">
-                            <Typography variant="h6">
-                              Change Institute
-                            </Typography>
-                          </Link>
-                        </ListItemText>
-                      </ListItem>
+
                       {/* <ListItem
                         button
                         style={{ width: "300px", color: "#3F51B5" }}
@@ -318,6 +311,53 @@ class StudentDashBoard extends Component {
                           </Link>
                         </ListItemText>
                       </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <AssignmentIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            to="/FreeAccess"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Typography variant="h6">Free Access</Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <FolderIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link style={{ textDecoration: "none" }} to="/chinst">
+                            <Typography variant="h6">
+                              Change Institute
+                            </Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
+                      <ListItem
+                        button
+                        style={{ width: "300px", color: "#3F51B5" }}
+                      >
+                        <ListItemAvatar>
+                          <AssignmentIcon />
+                        </ListItemAvatar>
+                        <ListItemText>
+                          <Link
+                            to="/pasthistory"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <Typography variant="h6">Past History</Typography>
+                          </Link>
+                        </ListItemText>
+                      </ListItem>
                     </List>
                   </Grid>
                 </Card>
@@ -349,6 +389,15 @@ class StudentDashBoard extends Component {
                     )}
                   />
                   <Route
+                    path="/FreeAccess"
+                    component={() => (
+                      <FreeAccess
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+                  <Route
                     path="/giveaccess"
                     component={() => (
                       <GiveAccessTo
@@ -370,6 +419,15 @@ class StudentDashBoard extends Component {
                     path="/myreqs"
                     component={() => (
                       <MyRequest
+                        accounts={this.props.accounts}
+                        contract={this.props.contract}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/pasthistory"
+                    component={() => (
+                      <PastHistory
                         accounts={this.props.accounts}
                         contract={this.props.contract}
                       />
