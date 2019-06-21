@@ -24,18 +24,18 @@
 - It works on the idea that: “Only the issuer can upload the certificate and the rest people can only view  it.” The entire process       works on the blockchain in partnership with the IPFS(to provide data security). 
 - Does Everything for Certificates : Storing ,Validating and Sharing .
 - Thus this is a modern and hassle-free solution to manage certificates and verify them!
-## How
-- It is D-App on Ethereum([visit](https://www.ethereum.org/)).
+## Insight
+- It is D-App on [Ethereum](https://www.ethereum.org/).
 - Back-End has Smart Contract 
-- Front-end of our Web-App is made with React.Js and our complete frontend components are available at [@gauravsharma-gs](https://github.com/gauravsharma-gs)  /dapper-ui ([visit](https://github.com/gauravsharma-gs/dapper-ui))   
-- All User-Data is stored on IPFS([visit](https://ipfs.io/)) also every data is first encryted locally and then send to ipfs to have more security
+- Front-end of our Web-App is made with React.Js and our complete frontend components are available at [@gauravsharma-gs](https://github.com/gauravsharma-gs)  /dapper-ui   ([visit](https://github.com/gauravsharma-gs/dapper-ui))   
+- All User-Data is stored on [IPFS](https://ipfs.io/) also every data is first encryted locally and then send to ipfs to have more security
 <p align="center">
  <img height=350px  src="./img/screens/encryt.PNG" >
 </p>
 
 - It create Multi-Sig Wallets for every student where both Student and his/her Institute is Owner.
-- We are using Metamask Browser Extension ([visit](https://metamask.io/)) to work with Ethereum.
-- We have used Truffle ([visit](https://www.trufflesuite.com/)) for testing our project
+- We are using [Metamask](https://metamask.io/) Browser Extension to work with Ethereum.
+- We have used [Truffle](https://www.trufflesuite.com/) for testing our project
 
 ## How to Use
 
@@ -101,5 +101,48 @@
  - `Change Institute Approvals`
    - Student requests for change of institute appear here .
     
+## Installation 
 
-
+### For Development
+ - We are using Truffle for testing and development of this project.
+ - Also you need to have Metamask Browser Extension.
+ - For setting up Truffle (more detailed instruction are avalaible [here](https://github.com/truffle-box/react-box) )  
+ - Steps :
+   - Clone the repo
+   > $ git clone https://github.com/nikhildsahu/E-Certify.git
+   - Setup Truffle
+     - Install truffle
+     > $ npm install -g truffle
+     - Unbox React inside any Directory 
+     > $ truffle unbox react
+     - Inside that Directory
+     - Now replace Contracts folder with  Contracts folder present in Repo.
+     - Also Copy Complete Repo content in to Client folder. 
+     - Run the development console 
+     > $ truffle develop
+     - Compile and migrate the smart contracts.
+     > compile
+     
+     > migrate
+     - In the client directory, we run the React app.
+     >// in another terminal (i.e. not in the truffle develop prompt)
+     
+     >  cd client
+     
+     >  npm run start
+     
+  - Open http://localhost:3000 to view it in the browser.       
+  - Import Account on Metamask with keys given by Truffle .
+  - Testing and Development can be done on these Accounts.
+  - Smart contract changes must be manually recompiled and migrated then only it will work.
+  -------------------------------------
+  ## Contributing
+  - We're are open to enhancements & bug-fixes.
+  - Feel free to add issues and submit patches.
+  ## Authors
+  - Atharva Udapure - [atharvau](https://github.com/atharvau)
+  - Nikhil Sahu - [nikhildsahu](https://github.com/nikhildsahu)
+  - Gaurav Sharma - [gauravsharma-gs](https://github.com/gauravsharma-gs)
+## License
+This project is licensed under the MIT - see the [LICENSE](https://github.com/nikhildsahu/E-Certify/blob/master/LICENSE) file for details.
+  
