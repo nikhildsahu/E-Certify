@@ -27,7 +27,7 @@
 ## Insight
 - It is D-App on [Ethereum](https://www.ethereum.org/).
 - Back-End has Smart Contract 
-- Front-end of our Web-App is made with React.Js and our complete frontend components are available at [@gauravsharma-gs](https://github.com/gauravsharma-gs)  /dapper-ui   ([visit](https://github.com/gauravsharma-gs/dapper-ui))   
+- Front-end of our Web-App is made with [React.Js](https://github.com/facebook/create-react-app) and our complete frontend components are available at [@gauravsharma-gs](https://github.com/gauravsharma-gs)  /dapper-ui   ([visit](https://github.com/gauravsharma-gs/dapper-ui))   
 - All User-Data is stored on [IPFS](https://ipfs.io/) also every data is first encryted locally and then send to ipfs to have more security
 <p align="center">
  <img height=350px  src="./img/screens/encryt.PNG" >
@@ -127,9 +127,9 @@
      - In the client directory, we run the React app.
      >// in another terminal (i.e. not in the truffle develop prompt)
      
-     >  cd client
+     > $ cd client
      
-     >  npm run start
+     > $ npm run start
      
   - Open http://localhost:3000 to view it in the browser.       
   - Import Account on Metamask with keys given by Truffle .
