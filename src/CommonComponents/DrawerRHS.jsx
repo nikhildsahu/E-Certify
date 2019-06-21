@@ -62,7 +62,7 @@ class DrawerRHS extends React.Component {
     return this.state.name.length > 0 ? false : true;
   };
 
-  setName = e => {
+  setName = (e) => {
     {
       this.setState({ name: e.target.value });
     }
@@ -93,7 +93,7 @@ class DrawerRHS extends React.Component {
     }
   };
 
-  captureFile = event => {
+  captureFile = (event) => {
     event.preventDefault();
     const file = event.target.files[0];
     console.log(event.target.files);
@@ -107,7 +107,7 @@ class DrawerRHS extends React.Component {
     };
   };
 
-  hj = async a => {
+  hj = async (a) => {
     await ipfs.add(a, (err, ipfsHash) => {
       console.log(err, ipfsHash);
 
@@ -134,7 +134,7 @@ class DrawerRHS extends React.Component {
 
     var hj = [];
 
-    this.state.nameadd.map(async nameadd => {
+    this.state.nameadd.map(async (nameadd) => {
       const response2 = await contract.methods.getProfile(accounts[0]).call();
 
       hj.push({ add: nameadd, name: response2[0], pic: response2[1] });
@@ -170,7 +170,7 @@ class DrawerRHS extends React.Component {
             </ListItemText>
           </ListItem>
           <Divider />
-          {this.state.hj.map(name => {
+          {this.state.hj.map((name) => {
             return (
               <div>
                 <ListItem
@@ -285,4 +285,5 @@ DrawerRHS.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+// this is the drawer rhs
 export default withStyles(styles)(DrawerRHS);
