@@ -1,0 +1,17 @@
+1. How can you compile two files with differemt solc versions?
+2. Even if I compile both of them with lowest verions, then there is an error on running migrate
+
+C:\Users\amans\AppData\Roaming\nvm\v11.0.0\node_modules\truffle\build\cli.bundled.js:352522
+        throw new Error("Could not find artifacts for " + import_path + " from any sources");
+        ^
+
+Error: Could not find artifacts for SimpleStorage from any sources
+    at Resolver.require (C:\Users\amans\AppData\Roaming\nvm\v11.0.0\node_modules\truffle\build\cli.bundled.js:352522:15)
+    at Object.require (C:\Users\amans\AppData\Roaming\nvm\v11.0.0\node_modules\truffle\build\cli.bundled.js:204702:38)
+    at ResolverIntercept.require (C:\Users\amans\AppData\Roaming\nvm\v11.0.0\node_modules\truffle\build\cli.bundled.js:436881:32)
+    at C:\Users\amans\OneDrive\Desktop\Blockcerts\Check\migrations\2_deploy_contracts.js:1:31
+    at Script.runInContext (vm.js:130:20)
+    at Script.runInNewContext (vm.js:136:17)
+    at Object.file (C:\Users\amans\AppData\Roaming\nvm\v11.0.0\node_modules\truffle\build\cli.bundled.js:349942:12)
+    at Migration._load (C:\Users\amans\AppData\Roaming\nvm\v11.0.0\node_modules\truffle\build\cli.bundled.js:435170:24)
+    at process.internalTickCallback (internal/process/next_tick.js:77:7)
